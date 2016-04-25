@@ -13,7 +13,7 @@
         </div>
         <form class="navbar-form navbar-left" role="search">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <input type="text" class="form-control" placeholder="Search for... " >
             <span class="input-group-btn">
               <button class="btn btn-default" type="button">Go!</button>
             </span>
@@ -24,9 +24,9 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li><a v-link="'/home'">Home</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a v-link = "'/login'"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
-            <li><a v-link="'/about_us'">About us</a></li>
+            <li><a v-link = "'/login'"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+            <li><a v-link = "'/register'"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a v-link="'/about_us'">About</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
