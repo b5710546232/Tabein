@@ -9,24 +9,15 @@
         </div>
         <!-- /.row -->
     </div>
-      <h2>{{ msg }}</h2>
-      <h3>DB project make by </h3>
-      <li>safe</li>
-      <li>tem</li>
-      <li>tor</li>
-      <li>mikko</li>
+      <h3>Database's project create by</h3>
+      <br>
+      <h5>Kundjanasith Thonglek  571054xxxx</h5>
+      <br>
+      <h5>Nattapat Sukpootanan  571054xxxx</h5>
+      <br>
+      <h5>Benjapol Worakan 571054xxxx</h5>
+      <br>
+      <h5>Mikko  571054xxxx</h5>
   </div>
 </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      msg:"this is about us page"
-    }
-  },
-  methods: {
-  }
-}
-</script>

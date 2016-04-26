@@ -1,24 +1,22 @@
 <template>
-
-  <!-- Page Content -->
-  <div class="container">
+  <div class="container-fluid">
 
     <div class="row">
       <div class="col-md-4">
         <p class="lead">Car ID : xxxxx</p>
       </div>
 
-      <div class="col-md-9">
+      <div>
 
         <div class="thumbnail">
           <img class="img-responsive" src="http://placehold.it/800x300" alt="">
           <div class="caption-full">
-            <h4>Profile name</h4>
+            <h4>Profile name : {{name}}</h4>
             some message
           </div>
         </div>
 
-        <div class="well well-white">
+        <div class="well well_white">
             <div class="ratings">
               <h5>Ratings and reviews</h5>
               <p class="pull-right">number reviews</p>
@@ -28,7 +26,9 @@
                 <span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star-empty"></span>
-                3.0 stars
+                <div class = "star">x stars</div>
+                <div class = "star">description </div>
+                <div class = "star">xxxxxx </div>
               </p>
             </div>
         </div>
@@ -45,7 +45,7 @@
         </div>
         <!-- comments -->
         <div v-for="comment of comments">
-          <div class="well">
+          <div class="well well_white">
             <div class="row">
               <div class="col-md-12">
                 <span class="glyphicon glyphicon-star"></span>
@@ -93,6 +93,7 @@ export default {
   data() {
     return {
       username:"Anonymous" + " : ",
+      name:"tor",
       comment_text:"",
       msg:"",
       time_since_post:"x day ago",

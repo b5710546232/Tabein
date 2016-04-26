@@ -5,7 +5,7 @@
         <h1 class="panel-title">Join the Tabien</h1>
       </div>
       <div class="panel-body">
-        <h4>Community of the people who has car</h4>
+        <h5>Community of the people who has car</h5>
         <p>Username</p>
         <div class="form-group">
           <input type="text"class="form-control"placeholder="Enter your username"v-model="username">
