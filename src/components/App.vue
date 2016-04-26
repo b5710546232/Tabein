@@ -11,12 +11,15 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-        <form class="navbar-form navbar-left" role="search">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for... " >
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
-            </span>
+
+        <form class="navbar-form navbar-left">
+          <div class="form-group"  style="display:inline;">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for... " >
+              <span class="input-group-btn">
+                <button v-link="'/vehicle'" class="btn btn-default" type="button">Go!</button>
+              </span>
+            </div>
           </div><!-- /input-group -->
         </form>
 

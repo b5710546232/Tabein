@@ -7,6 +7,8 @@ import Login from './components/Login.vue'
 import Vehicle from './components/Vehicle.vue'
 import Register from './components/Register.vue'
 import DashBoard from './components/Dashboard.vue'
+import Accountsetting from './components/Accountsetting.vue'
+import Test from './components/Test.vue'
 
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
@@ -33,12 +35,18 @@ router.map({
   '/dashboard':{
     component:DashBoard
   },
+  '/accountsetting':{
+    component:Accountsetting
+  },
+  '/test':{
+    component:Test
+  },
 
 });
 // redirect to home if any routes are unmatched
 router.redirect({
   // '*':'/home'
-  '*':'/dashboard'
+  '*':'/test'
 });
 
 // start the app

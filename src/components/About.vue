@@ -1,5 +1,5 @@
 <template>
-  <div class="col-sm-4 col-sm-offset-4">
+  <div class="col-lg-4 col-lg-offset-4">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -9,7 +9,8 @@
         </div>
         <!-- /.row -->
     </div>
-      <h3>Database's project create by</h3>
+      <h2>Database's project</h2>
+      <h3>Create by</h3>
       <br>
       <h5>Kundjanasith Thonglek  571054xxxx</h5>
       <br>

@@ -21,3 +21,40 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      username:"Anonymous" + " : ",
+      firstname:"tor",
+      lastname:"worakan",
+      email:"test@xmail.com",
+      comment_text:"",
+      msg:"",
+      time_since_post:"x day ago",
+      vehicles:[
+        {
+          message:{
+          licenseplate:"xxxกขค",
+          provice:"กรุงเทsafพ",
+          model:"Toyota"
+        }
+      },
+      {
+        message:{
+        licenseplate:"xxxxx อิอิ",
+        provice:"กรุงเทพ จริงป้ะ",
+        model:"กูรถวิท"
+      }
+    },
+      ]
+    }
+  },
+  methods: {
+    addComment(){
+      this.comments.push({text:this.comment_text});
+      this.comment_text=''
+    },
+  }
+}
+</script>

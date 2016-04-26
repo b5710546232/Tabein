@@ -8,15 +8,15 @@
         <h5>Community of the people who has car</h5>
         <p>Username</p>
         <div class="form-group">
-          <input type="text"class="form-control"placeholder="Enter your username"v-model="username">
+          <input type="text"class="form-control"placeholder="username"v-model="username">
         </div>
         <p>Email Address</p>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter your E-mail" v-model="password">
+          <input type="text" class="form-control" placeholder="E-mail" v-model="email">
         </div>
         <p>Password</p>
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Enter your password" v-model="password">
+          <input type="password" class="form-control" placeholder="password" v-model="password">
         </div>
         <button class="btn btn-primary btn-block" @click="method()">Create an account</button>
       </div>

@@ -2,18 +2,17 @@
   <div class="container-fluid">
 
     <div class="row">
-      <div class="col-md-4">
-        <p class="lead">Car ID : xxxxx</p>
-      </div>
 
       <div>
-
         <div class="thumbnail">
-          <img class="img-responsive" src="http://placehold.it/800x300" alt="">
-          <div class="caption-full">
-            <h4>Profile name : {{name}}</h4>
-            some message
+          <div class="col-md-4">
+            <p class="lead">Car ID : xxxxx</p>
           </div>
+          <img class="img-responsive" src="http://placehold.it/800x300" alt="">
+          <div class="mytext">
+            <h4>Owner name : {{name}}</h4>
+            some message description
+            </div>
         </div>
 
         <div class="well well_white">
@@ -112,5 +111,8 @@ export default {
 <style>
 .well_white{
   background-color: rgb(255, 255, 255)
+}
+.mytext{
+  margin-left: 1%;
 }
 </style>

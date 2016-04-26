@@ -37,7 +37,7 @@
       <div class="row">
         <div class="col-lg-12">
           <hr>
-          <p>Tabien web data project 2015</p>
+          <p>Tabien web database SKE project 2016</p>
         </div>
       </div>
     </footer>
@@ -54,7 +54,6 @@ export default {
       firstname:"tor",
       lastname:"worakan",
       email:"test@xmail.com",
-      comment_text:"",
       msg:"",
       time_since_post:"x day ago",
       vehicles:[
@@ -76,9 +75,8 @@ export default {
     }
   },
   methods: {
-    addComment(){
-      this.comments.push({text:this.comment_text});
-      this.comment_text=''
+    someMethod(){
+      // add method here
     },
   }
 }
