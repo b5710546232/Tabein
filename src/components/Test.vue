@@ -2,14 +2,15 @@
 <template>
   <div class="col-sm-4 col-sm-offset-4">
     <h1>Tabien Testing Page</h1>
-    <input type="text" class="form-control" placeholder="Input something" v-model="msg" >
-    <button class="btn btn-primary btn-block" @click="clickD(msg)">somebutton</button>
+    <input type="text" class="form-control" placeholder="Input something" v-model="text1" >
+    <input type="text" class="form-control" placeholder="Input something" v-model="text2" >
+    <button class="btn btn-primary btn-block" @click="clickD(text1,text2)">somebutton</button>
 
     <h3>You can see text here.</h3>
     {{showText}}
     <br>
     <h4>this is text in input</h4>
-    {{msg}}
+    {{text1}}{{text2}}
   </div>
 </div>
 </template>
@@ -18,16 +19,18 @@
 export default {
   data() {
     return {
+      text1:"",
+      text2:"",
       msg:"",
       showText:""
     }
   },
   methods: {
-    clickD(text){
-      var t = {x:text}
-      console.log("text = "+text);
+    clickD(text1,text2){
+      var modelText = {brand:text1,make:text2}
+      console.log("text1 = "+text1+"||"+"text2 = "+text2);
       console.log('click ได้ นะ');
-        this.$http.post("http://localhost:7777/", t, (data) => {
+        this.$http.post("http://localhost:7777/newmodel", modelText, (data) => {
           console.log('success')}).error((err) => {
         console.log('error วะ ต่อ');
       });
