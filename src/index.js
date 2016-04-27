@@ -11,8 +11,11 @@ import Accountsetting from './components/Accountsetting.vue'
 import Test from './components/Test.vue'
 
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
+
 Vue.use(VueRouter);
-const router = new VueRouter();
+Vue.use(VueResource);
+export const router = new VueRouter();
 router.map({
   '/home':{
     component:Home
@@ -46,7 +49,7 @@ router.map({
 // redirect to home if any routes are unmatched
 router.redirect({
   // '*':'/home'
-  '*':'/test'
+  '*':'/dashboard'
 });
 
 // start the app

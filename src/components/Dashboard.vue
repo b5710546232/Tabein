@@ -5,6 +5,8 @@
       <div>
 
         <div class="well well_white">
+          {{text}}
+          {{getText}}
           <!-- <img class="img-responsive" src="http://placehold.it/800x300" alt=""> -->
           <p class="lead">Profile name</p>
           <hr>
@@ -52,32 +54,62 @@ export default {
     return {
       username:"Anonymous" + " : ",
       firstname:"tor",
+      text:"start",
       lastname:"worakan",
       email:"test@xmail.com",
       msg:"",
       time_since_post:"x day ago",
       vehicles:[
-        {
-          message:{
-          licenseplate:"xxxกขค",
-          provice:"กรุงเทsafพ",
-          model:"Toyota"
-        }
-      },
-      {
-        message:{
-        licenseplate:"xxxxx อิอิ",
-        provice:"กรุงเทพ จริงป้ะ",
-        model:"กูรถวิท"
-      }
-    },
+        // {
+        //   message:{
+        //     licenseplate:"xxxกขค",
+        //     provice:"กรุงเทsafพ",
+        //     model:"Toyota"
+        //   }
+        // },
+        // {
+        //   message:{
+        //     licenseplate:"xxxxx อิอิ",
+        //     provice:"กรุงเทพ จริงป้ะ",
+        //     model:"กูรถวิท"
+        //   }
+        // },
+
       ]
     }
+  },
+  computed(){
+    return{
+      getText(){
+        this.$http
+        .get('http://localhost:7777/text', function(data){
+          this.text =data + "safd";
+        })
+        .error((err) => console.log(err))
+        return this.text+"error";
+      }
+    }
+  },
+  created () {
+    this.$http
+    .get('http://localhost:7777/text', (data) => {
+      this.text = data;
+    })
+
+    this.getText();
+
   },
   methods: {
     someMethod(){
       // add method here
+
     },
+    getText(){
+      this.$http
+      .get('http://localhost:7777/user', (data) => {
+        this.vehicles = data;
+      })
+    }
   }
 }
 </script>
