@@ -49,7 +49,7 @@ router.map({
 // redirect to home if any routes are unmatched
 router.redirect({
   // '*':'/home'
-  '*':'/vehicle'
+  '*':'/dashboard'
 });
 
 // start the app
