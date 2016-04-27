@@ -20,9 +20,9 @@
           <div class="well well_white">
             <p class="lead">Vehicle</p>
             <hr>
-            <div class="">License plate: {{item.message.licenseplate}}</div>
-            <div class=""> province     : {{item.message.provice}}</div>
-            <div class=""> Car model : {{item.message.model}}</div>
+            <div class="">License plate: {{item.licenseplate}}</div>
+            <div class=""> province     : {{item.provice}}</div>
+            <div class=""> Car model : {{item.model}}</div>
           </div>
         </div>
 
