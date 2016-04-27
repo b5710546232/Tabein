@@ -5,8 +5,6 @@
       <div>
 
         <div class="well well_white">
-          {{text}}
-          {{getText}}
           <!-- <img class="img-responsive" src="http://placehold.it/800x300" alt=""> -->
           <p class="lead">Profile name</p>
           <hr>
@@ -20,9 +18,11 @@
           <div class="well well_white">
             <p class="lead">Vehicle</p>
             <hr>
-            <div class="">License plate: {{item.licenseplate}}</div>
+            <div class="">License plate: {{item.first_block}}{{item.second_block}}</div>
             <div class=""> province     : {{item.provice}}</div>
-            <div class=""> Car model : {{item.model}}</div>
+            <div class=""> color     : {{item.color}}</div>
+            <div class=""> Brand     : {{item.brand}}</div>
+            <div class=""> model : {{item.model}}</div>
           </div>
         </div>
 
@@ -60,34 +60,40 @@ export default {
       msg:"",
       time_since_post:"x day ago",
       vehicles:[
-        // {
-        //   message:{
-        //     licenseplate:"xxxกขค",
-        //     provice:"กรุงเทsafพ",
-        //     model:"Toyota"
-        //   }
-        // },
-        // {
-        //   message:{
-        //     licenseplate:"xxxxx อิอิ",
-        //     provice:"กรุงเทพ จริงป้ะ",
-        //     model:"กูรถวิท"
-        //   }
-        // },
+        {
+          first_block:"xyz",
+          second_block:"1150",
+          color:"กูสีแดง",
+          provice:"กทมวะ",
+          brand:"Toyoya",
+          model:"V-โก้"
+        },
+        {
+          first_block:"xyz",
+          second_block:"1150",
+          color:"กูสีแดง",
+          provice:"กทมวะ",
+          brand:"Toyoya",
+          model:"V-โก้"
+        },
+        {
+          first_block:"xyz",
+          second_block:"1150",
+          color:"กูสีแดง",
+          provice:"กทมวะ",
+          brand:"Toyoya",
+          model:"V-โก้"
+        },
+        {
+          first_block:"xyz",
+          second_block:"1150",
+          color:"กูสีแดง",
+          provice:"กทมวะ",
+          brand:"Toyoya",
+          model:"V-โก้"
+        },
 
       ]
-    }
-  },
-  computed(){
-    return{
-      getText(){
-        this.$http
-        .get('http://localhost:7777/text', function(data){
-          this.text =data + "safd";
-        })
-        .error((err) => console.log(err))
-        return this.text+"error";
-      }
     }
   },
   created () {
