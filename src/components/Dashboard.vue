@@ -11,7 +11,7 @@
           <div class=""> name     : {{firstname}}</div>
           <div class=""> lastname : {{lastname}}</div>
           <div class=""> e-mail : {{email}}</div>
-          <div class=""> Number of cars : 5 cars</div>
+          <div class=""> Number of cars : {{count}} cars</div>
           <hr>
         </div>
         <div v-for="item in vehicles">
@@ -19,10 +19,10 @@
             <p class="lead">Vehicle</p>
             <hr>
             <div class="">License plate: {{item.first_block}}{{item.second_block}}</div>
-            <div class=""> province     : {{item.provice}}</div>
+            <div class=""> province     : {{item.province}}</div>
             <div class=""> color     : {{item.color}}</div>
             <div class=""> Brand     : {{item.brand}}</div>
-            <div class=""> model : {{item.model}}</div>
+            <div class=""> model : {{item.make}}</div>
           </div>
         </div>
 
@@ -57,6 +57,7 @@ export default {
       text:"start",
       lastname:"worakan",
       email:"test@xmail.com",
+      count:0,
       msg:"",
       time_since_post:"x day ago",
       vehicles:[
@@ -64,7 +65,7 @@ export default {
           first_block:"xyz",
           second_block:"1150",
           color:"กูสีแดง",
-          provice:"กทมวะ",
+          province:"กทมวะ",
           brand:"Toyoya",
           model:"V-โก้"
         },
@@ -72,7 +73,7 @@ export default {
           first_block:"xyz",
           second_block:"1150",
           color:"กูสีแดง",
-          provice:"กทมวะ",
+          province:"กทมวะ",
           brand:"Toyoya",
           model:"V-โก้"
         },
@@ -80,7 +81,7 @@ export default {
           first_block:"xyz",
           second_block:"1150",
           color:"กูสีแดง",
-          provice:"กทมวะ",
+          province:"กทมวะ",
           brand:"Toyoya",
           model:"V-โก้"
         },
@@ -88,7 +89,7 @@ export default {
           first_block:"xyz",
           second_block:"1150",
           color:"กูสีแดง",
-          provice:"กทมวะ",
+          province:"กทมวะ",
           brand:"Toyoya",
           model:"V-โก้"
         },
@@ -97,12 +98,11 @@ export default {
     }
   },
   created () {
-    this.$http
-    .get('http://localhost:7777/text', (data) => {
-      this.text = data;
-    })
 
-    this.getText();
+    this.initUser();
+    this.initVehicle();
+    this.numVehicle();
+    // this.initVehicleModel();
 
   },
   methods: {
@@ -110,14 +110,34 @@ export default {
       // add method here
 
     },
-    getText(){
+    initUser(){
       this.$http
-      .get('http://localhost:7777/user', (data) => {
-        this.vehicles = data;
-      })
-    }
+      .get('http://localhost:7777/user/1', (data) => {
+        console.log(data);
+        console.log(data[0].id);
+        this.firstname = data[0].firstname;
+        this.lastname = data[0].lastname;
+      });
+  },
+  initVehicle(){
+    this.$http
+    .get('http://localhost:7777/vehicle/1', (data) => {
+      console.log(data);
+      console.log("vehicle"+data[0].id);
+      this.vehicles = data;
+    });
+  },
+  numVehicle(){
+    this.$http
+    .get('http://localhost:7777/numvehicle/1', (data) => {
+      console.log(data);
+      console.log("count vec"+data[0].num);
+      this.count = data[0].num;
+    });
   }
 }
+}
+
 </script>
 
 <style>
