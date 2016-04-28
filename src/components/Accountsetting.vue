@@ -5,7 +5,8 @@
         <h1 class="panel-title">General Account Settings</h1>
       </div>
       <div class="panel-body">
-        <h5>Community of the people who has car</h5>
+        <h6 class = "text-center">Edit your Information</h6>
+        <br>
         username
         <div class="form-group">
           <input type="text"class="form-control"placeholder="username"v-model="username">
@@ -19,12 +20,14 @@
           <input type="password" class="form-control" placeholder="password" v-model="password">
         </div>
         <div class="row">
-        <div class="col-md-6">
-        <button class="btn btn-primary btn-block" @click="method()">Save changes</button>
-        <button class="btn btn-default btn-block" @click="method()">Cancel</button>
+          <div class="col-md-6">
+            <button class="btn btn-primary btn-block" @click="method()">Save changes</button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-default btn-block" @click="method()">Cancel</button>
+          </div>
+        </div>
       </div>
     </div>
-    </div>
   </div>
-
 </template>
