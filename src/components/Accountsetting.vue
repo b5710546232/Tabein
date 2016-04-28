@@ -31,3 +31,18 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      username:"Anonymous",
+      msg:""
+    }
+  },
+  methods: {
+    someMethod(){
+
+    },
+  }
+}
+</script>
