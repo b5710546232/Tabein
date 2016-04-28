@@ -17,8 +17,8 @@
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search Tabein " >
               <!-- <span class="input-group-btn"> -->
-                <!-- <button v-link="'/vehicle'" class="btn btn-default" type="button">Go!</button> -->
-                 <!-- <span class="input-group-addon btn"><span class="glyphicon glyphicon-search"></span></span> -->
+              <!-- <button v-link="'/vehicle'" class="btn btn-default" type="button">Go!</button> -->
+              <!-- <span class="input-group-addon btn"><span class="glyphicon glyphicon-search"></span></span> -->
               <!-- </span> -->
               <span class="input-group-addon btn" v-link="'/vehicle'" ><span class="glyphicon glyphicon-search"></span></span>
             </div>
@@ -38,9 +38,6 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-
-
-
     <div class="container">
       <router-view></router-view>
     </div>

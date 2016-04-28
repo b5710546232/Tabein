@@ -5,7 +5,7 @@
         <h1 class="panel-title">General Account Settings</h1>
       </div>
       <div class="panel-body">
-        <h6 class = "text-center">Edit your Information</h6>
+        <h4 class = "text-center">Edit your Information</h4>
         <br>
         username
         <div class="form-group">
