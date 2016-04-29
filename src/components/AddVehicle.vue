@@ -72,7 +72,7 @@
       </div><!-- /input-group -->
       <!-- end model-select -->
       <br>
-      <button class="btn btn-defaul" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
   add new model
 </button>
 <div class="collapse" id="collapseExample">
@@ -92,7 +92,7 @@
 
 <br>
 <div class="input-group col-md-8">
-    <button type="button" class="btn btn-default col-md-4" data-dismiss="modal" @click="" >Confirm</button>
+    <button type="button" class="btn btn-default col-md-4" data-toggle="collapse"  data-target="#collapseExample" @click="" >Confirm</button>
     </div>
 <br>
   </div>
