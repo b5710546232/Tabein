@@ -156,7 +156,7 @@ export default {
     this.initOwner(this.vehicle_id);
     this.initVehicleModel(this.vehicle_id);
     this.initUser(this.reviewer_id);
-    this.initRate(this.vehicle_id,this.reviewer_id);
+    this.initRate(this.vehicle_id);
   },
   methods: {
     addRate(){
@@ -213,8 +213,14 @@ export default {
         this.lastname = data[0].lastname;
       });
     },
-    initRate(vid,rid){
-      
+    initRate(vid){
+      this.$http
+      .get('http://localhost:7777/initRate/'+vid, (data) => {
+          for(var i=0 ; i<data.length ; i++){
+            console.log("RATE"+data[i].message);
+            this.comments.unshift({text:data[i].message});
+          }
+      });
     }
   }
 }
