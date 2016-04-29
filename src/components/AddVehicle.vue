@@ -19,13 +19,13 @@
         <div class="modal-body">
           <div class="input-group col-md-8">
             <span class="input-group-addon"> First Block &nbsp;&nbsp;&nbsp;&nbsp;   </span>
-            <input class="form-control" type="text" v-model="inputFirst" placeholder="Input first block">
+            <input class="form-control" type="text" v-model="inputFirst" placeholder="Input first block" maxlength="3">
           </div>
 
           <br>
           <div class="input-group col-md-8">
             <span class="input-group-addon"> Second Block </span>
-            <input class="form-control" type="text" v-model="inputSecond" placeholder="Input Second Block block">
+            <input class="form-control" type="text" v-model="inputSecond" placeholder="Input second block" maxlength="4">
           </div>
           <br>
 
@@ -51,18 +51,6 @@
         <div class="input-group col-md-8">
           <span class="input-group-addon"> Color &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
           <input class="form-control" type="text" v-model="inputColor" placeholder="Input color">
-        </div>
-        <br>
-
-        <div class="input-group col-md-8">
-          <span class="input-group-addon"> Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
-          <input class="form-control" type="text" v-model="inputBrand" placeholder="Input brand">
-        </div>
-        <br>
-
-        <div class="input-group col-md-8">
-          <span class="input-group-addon"> Make&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
-          <input class="form-control" type="text" v-model="inputMake" placeholder="Input make">
         </div>
         <br>
 
