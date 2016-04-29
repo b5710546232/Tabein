@@ -62,4 +62,7 @@ export default {
 .view{
   padding-top:5%;
 }
+.navbar{
+  background-color: #eeecec;
+}
 </style>
