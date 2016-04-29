@@ -124,7 +124,7 @@ export default {
   data() {
     return {
       avg_ratting:3.6,
-      total_ratting:70,
+      total_ratting: "no connection",
       vehicle_id: 71,
       reviewer_id: 211,
       first_block: 'first',
@@ -162,7 +162,17 @@ export default {
     this.initVehicleModel(this.vehicle_id);
     this.initUser(this.reviewer_id);
     this.initRate(this.vehicle_id);
+    this.numRate(this.vehicle_id);
+    this.avgRate(this.vehicle_id);
   },
+  // computed:{
+  //   getAvgRate(){
+  //     return this.avg_ratting;
+  //   }
+  //   getTotalRate(){
+  //     return this.total_ratting;
+  //   }
+  // },
   methods: {
     addRate(){
       console.log("text"+this.comment_text);
@@ -182,6 +192,8 @@ export default {
       this.comments.unshift({text:this.comment_text , rattings:this.value});
       this.comment_text='';
       this.value = 1;
+      this.avg_ratting = (this.avg_ratting+this.rate)/2;
+      this.total_ratting = this.comments.length;
     },
     initVehicle(id){
       console.log("vehicle"+id);
@@ -225,7 +237,7 @@ export default {
       .get('http://localhost:7777/initRate/'+vid, (data) => {
           for(var i=0 ; i<data.length ; i++){
             console.log("RATE"+data[i].message);
-            this.comments.unshift({text:data[i].message});
+            this.comments.unshift({text:data[i].message, rattings:data[i].rate});
           }
       });
     },
@@ -256,6 +268,18 @@ export default {
       this.comments.unshift({text:this.comment_text , rattings:this.value});
       this.comment_text='';
       this.value = 1;
+    },
+    numRate(vid){
+      this.$http
+      .get('http://localhost:7777/numRate/'+vid, (data) => {
+          this.total_ratting = data[0].num;
+      });
+    },
+    avgRate(vid){
+      this.$http
+      .get('http://localhost:7777/avgRate/'+vid, (data) => {
+          this.avg_ratting = data[0].avgRate;
+      });
     }
   }
 }
