@@ -10,16 +10,16 @@
             <p class="lead">Vehicle profile</p>
             <hr>
             <div class="row">
-              <div class="col-md-12"><p class="lead">Car ID : xxxxx</p></div>
+              <div class="col-md-12"><p class="lead">Car ID: {{first_block}} {{second_block}} {{province}}  </p></div>
               <div class="col-md-4">
               </div>
               <div class="col-md-4">
                 <img class="img-responsive" src="http://placehold.it/150x150" alt="">
               </div>
 
-              <div class="mytext col-md-4">
-                <h4>Owner name : {{name}}</h4>
-                some message description
+              <div class="mytext col-md-5">
+                <h4>Owner name : {{owner_firstname}} {{owner_lastname}}</h4>
+                Description : {{brand}} {{make}} {{color}}
               </div>
             </div>
           </div>
@@ -64,13 +64,13 @@
 
           <div class="well">
 
-            <div class="row review-row"><div class="col-md-12">Review by {{username}}</div></div>
+            <div class="row review-row"><div class="col-md-12">Review by {{firstname}} {{lastname}} ({{username}})</div></div>
             <div class="row review-row">
               <div class="col-md-12">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Write a review ..." v-model="comment_text"  @keyup.enter = "addComment" autofocus>
+                  <input type="text" class="form-control" placeholder="Write a review ..." v-model="comment_text"  @keyup.enter = "addRate" autofocus>
                   <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" @click = "addComment">sumit</button>
+                    <button class="btn btn-default" type="button" @click = "addRate()">submit</button>
                   </span>
                 </div>
               </div>
@@ -89,9 +89,9 @@
               <div class="row">
                 <div class="col-md-12">
                   <span class="glyphicon glyphicon-star" v-for = "item in stars"></span>
-                  <span class="glyphicon glyphicon-star-empty" v-for "item in emptystars"></span>
+                  <span class="glyphicon glyphicon-star-empty" v-for = "item in emptystars"></span>
                   <br>
-                  {{username}}
+                  {{firstname}} {{lastname}} ({{username}})
                   <br>
                   <span class="pull-right">{{time_since_post}}</span>
                   {{ comment.text }}
@@ -128,8 +128,20 @@
 export default {
   data() {
     return {
-      username:"Anonymous",
-      name:"tor",
+      vehicle_id: 71,
+      reviewer_id: 211,
+      first_block: 'first',
+      second_block: 'second',
+      province: '---',
+      username: '---',
+      firstname: '---',
+      lastname: '---',
+      rate: 5,//temp
+      owner_firstname: '---',
+      owner_lastname: '---',
+      brand: 'no connection',
+      make: '',
+      color: '',
       stars:[1,2,3,4],
       emptystars:[1],
       comment_text:"",
@@ -138,12 +150,72 @@ export default {
       comments:[],
     }
   },
+  created(){
+    console.log("Start vehicle.vue");
+    this.initVehicle(this.vehicle_id);
+    this.initOwner(this.vehicle_id);
+    this.initVehicleModel(this.vehicle_id);
+    this.initUser(this.reviewer_id);
+    this.initRate(this.vehicle_id,this.reviewer_id);
+  },
   methods: {
-    addComment(){
-      console.log(this.comments);
+    addRate(){
+      console.log("text"+this.comment_text);
+      console.log("date"+Date.now());
+      var rate = {
+        user_id: this.reviewer_id,
+        vehicle_id: this.vehicle_id,
+        rate: this.rate,
+        timestamp: Date.now(),
+        message: this.comment_text
+      };
+      this.$http
+      .post('http://localhost:7777/newrating', rate, (data) => {
+
+      });
       this.comments.unshift({text:this.comment_text});
-      this.comment_text=''
+      this.comment_text='';
     },
+    initVehicle(id){
+      console.log("vehicle"+id);
+      this.$http
+      .get('http://localhost:7777/vehicleByVID/'+id, (data) => {
+        console.log("VID"+data[0].first_block);
+        console.log("vehicle"+data[0].id);
+        this.province = data[0].province;
+        this.first_block = data[0].first_block;
+        this.second_block = data[0].second_block;
+
+      });
+    },
+    initOwner(id){
+      console.log("vehicle"+id);
+      this.$http
+      .get('http://localhost:7777/userByVID/'+id, (data) => {
+        this.owner_firstname = data[0].firstname;
+        this.owner_lastname = data[0].lastname;
+      });
+    },
+    initVehicleModel(id){
+      console.log("vehicle"+id);
+      this.$http
+      .get('http://localhost:7777/modelByVID/'+id, (data) => {
+        this.brand = data[0].brand;
+        this.make = data[0].make;
+        this.color = data[0].color;
+      });
+    },
+    initUser(id){
+      this.$http
+      .get('http://localhost:7777/user/'+id, (data) => {
+        this.username = data[0].username;
+        this.firstname = data[0].firstname;
+        this.lastname = data[0].lastname;
+      });
+    },
+    initRate(vid,rid){
+      
+    }
   }
 }
 </script>
@@ -162,7 +234,6 @@ export default {
   padding-bottom: 2%;
 
 }
-
 .review-row{
   padding-bottom: 1%;
 }
