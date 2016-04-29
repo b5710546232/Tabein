@@ -146,7 +146,6 @@ export default {
       msg:"",
       time_since_post:"x day ago",
       comments:[],
-      ratings_comment:[],
     }
   },
   props: {
@@ -168,6 +167,7 @@ export default {
     addRate(){
       console.log("text"+this.comment_text);
       console.log("date"+Date.now());
+      this.rate = this.value;
       var rate = {
         user_id: this.reviewer_id,
         vehicle_id: this.vehicle_id,
