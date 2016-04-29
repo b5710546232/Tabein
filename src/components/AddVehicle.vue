@@ -65,7 +65,7 @@
           </button>
 
           <ul class = "dropdown-menu pull-right scrollable-menu">
-            <li v-for = "item in models"><a  @click = "clickGetModel([$index])" >Brand : {{item.brand}} Make : {{item.make}}</a></li>
+            <li class ="pointer" v-for = "item in models"><a  @click = "clickGetModel([$index])" >Brand : {{item.brand}} Make : {{item.make}}</a></li>
           </ul>
         </div><!-- /btn-group -->
 
@@ -92,7 +92,7 @@
 
 <br>
 <div class="input-group col-md-8">
-    <button type="button" class="btn btn-default col-md-4" data-toggle="collapse"  data-target="#collapseExample" @click="" >Confirm</button>
+    <button type="button" class="btn btn-default col-md-4" data-toggle="collapse"  data-target="#collapseExample" @click="" >Add model</button>
     </div>
 <br>
   </div>
@@ -191,7 +191,7 @@
     </div>
 
   <!-- old-virsion -->
-    <!-- <button class="btn btn-primary btn-block" @click="clickAddModel(inputFirst,inputSecond,inputColor)">add vehicle</button> -->
+    <!-- <button class="btn btn-primary btn-block" @click="clickAddModel(inputFirst,inputSecond,inputColor)" >add vehicle</button> -->
     <!-- end-old-virsion -->
 
 <!-- new-version -->
@@ -249,13 +249,9 @@ export default {
     }
   },
   created () {
-    var user_id = this.userId;
+    this.refresh();
     this.firstname = 0;
-    this.getUser(user_id);
-    this.initProvince();
-    this.initVehicleModel();
-    this.initVehicle(user_id);
-    this.numVehicle(user_id);
+
   },
   methods: {
     clickAddModel(first,second,color){
@@ -284,8 +280,11 @@ export default {
           color: color,
           province: this.province_text,
         };
+        this.vehicles.push(newModel);
         this.$http.post("http://localhost:7777/newvehicle", newModel, (data) => {
-          console.log('success')}).error((err) => {
+          console.log('success')
+        }
+        ).error((err) => {
         console.log('error วะ ต่อ'+err);
       });
       }
@@ -298,6 +297,16 @@ export default {
       //   console.log('error วะ ต่อ');
       // });
       // this.getUser(text3);
+      // this.refresh();
+    },
+    refresh(){
+      console.log('refesh');
+      var user_id = this.userId;
+      this.getUser(user_id);
+      this.initProvince();
+      this.initVehicleModel();
+      this.initVehicle(user_id);
+      this.numVehicle(user_id);
     },
     clickGetLocation(location){
       this.province_text = location;
@@ -340,6 +349,7 @@ export default {
     });
   },
   initVehicle(id){
+    console.log('in id = '+id);
     this.$http
     .get('http://localhost:7777/vehicle/'+id, (data) => {
       console.log(data);
