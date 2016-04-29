@@ -92,7 +92,7 @@
 
 <br>
 <div class="input-group col-md-8">
-    <button type="button" class="btn btn-default col-md-4" data-toggle="collapse"  data-target="#collapseExample" @click="" >Add model</button>
+    <button type="button" class="btn btn-success col-md-4" data-toggle="collapse"  data-target="#collapseExample" @click="clickAddModel(inputBrand,inputMake)" >Add model</button>
     </div>
 <br>
   </div>
@@ -101,8 +101,8 @@
       </div><!-- end body -->
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" @click="clickAddModel(inputFirst,inputSecond,inputColor)" >Confirm</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" @click="clickAddVehicle(inputFirst,inputSecond,inputColor)" >Confirm</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
       </div>
 
@@ -137,68 +137,14 @@
             <div class="" style="text-indent: 3em;" > Brand     : {{item.brand}}  Make : {{item.make}}  </div>
           </div>
         </div>
-
-      <!-- add vehicle old -->
-      <!-- <div>
-          <p class="lead">Add vehicle</p>
-          <hr>
-          <div class="form">
-          <div class="">
-            First Block    :
-            <input class="" type="text" v-model="inputFirst" placeholder="Input first block" maxlength="3">
-            Second Block    :
-            <input class="" type="text" v-model="inputSecond" placeholder="Input second block" maxlength="4">
-          </div>
-
-          <div class="">
-            Province :
-      <div class="dropdown">
-      <button class="dropdown-toggle" type="button" data-toggle="dropdown">
-      {{province_text}}
-      <span class="caret"></span></button>
-      <ul class="dropdown-menu scrollable-menu">
-        <li v-for = "item in provinces"><a  @click = "clickGetLocation(provinces[$index].name)" >{{item.name}}
-      </a>
-        </li>
-      </ul>
-    </div>
-
-          </div>
-
-          <div class="">
-            Color :
-            <input class="form-control" type="text" v-model="inputColor" placeholder="Input color">
-          </div>
-
-
-          <div class=""> Model     : </div>
-
-          <div class="dropdown">
-          <button class="dropdown-toggle" type="button" data-toggle="dropdown">
-          {{model_text}}
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu scrollable-menu">
-             <li v-for = "item in models"><a  @click = "clickGetModel([$index])" >Brand : {{item.brand}} Make : {{item.make}}</a></li>
-          </ul>
-        </div>
-
-        </div>
-          <hr>
-        </div> -->
-        <!-- add vehicle old -->
       </div>
 
     </div>
 
-  <!-- old-virsion -->
-    <!-- <button class="btn btn-primary btn-block" @click="clickAddModel(inputFirst,inputSecond,inputColor)" >add vehicle</button> -->
-    <!-- end-old-virsion -->
-
-<!-- new-version -->
     <div class="col-md-3"></div>
     <div class="input-group col-md-6">
       <!-- <button class="btn btn-default btn-block" @click="clickAddModel(inputFirst,inputSecond,inputColor)">add vehicle</button> -->
-      <button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#myModal">Add Vehicle</button>
+      <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#myModal">Add Vehicle</button>
     </div>
     <div class="col-md-3"></div>
     <!-- end new-version -->
@@ -221,18 +167,23 @@ export default {
       province_text:"Province",
       model_text: "Model",
       showText:"",
+      inputBrand:"",
+      inputMake:"",
+      inputFirst:"",
+      inputSecond:"",
+      inputColor:"",
       count: 0,
       vehiclemodel_id: null,
       provinces:null,
       models: null,
    vehicles:[
      {
-       first_block:"no information",
+       first_block:"-",
        second_block:"",
-       color:"กo information",
-       province:"no information",
-       brand:"no information",
-       make:"no information",
+       color:"-",
+       province:"-",
+       brand:"-",
+       make:"-",
      }]
     }
   },
@@ -242,7 +193,7 @@ export default {
 
   },
   methods: {
-    clickAddModel(first,second,color){
+    clickAddVehicle(first,second,color){
       console.log(" add model");
       if( this.model_text != "Model" && this.province_text != "Province"
           && first != "" && second != "" && color != ""){
@@ -276,16 +227,27 @@ export default {
         console.log('error วะ ต่อ'+err);
       });
       }
-      // var newModel = {firstname:this.firstname,lastname:this.lastname,location:this.location,
-      //                 brand:text1,make:text2}
-      // console.log("text1 = "+text1+"||"+"text2 = "+text2);
-      // console.log('click ได้ นะ');
-      //   this.$http.post("http://localhost:7777/newvehicle", modelText, (data) => {
-      //     console.log('success')}).error((err) => {
-      //   console.log('error วะ ต่อ');
-      // });
-      // this.getUser(text3);
-      // this.refresh();
+      this.inputFirst = "";
+      this.inputSecond = "";
+      this.inputColor = "";
+      this.province_text = "Province";
+      this.model_text = "Model";
+      this.count = this.vehicles.length;
+    },
+    clickAddModel(b,m){
+        var model = {
+          brand: b,
+          make: m
+        };
+        this.inputBrand = "";
+        this.inputMake = "";
+        this.models.push(model);
+        this.$http.post("http://localhost:7777/newmodel", model, (data) => {
+          console.log('success')
+        }
+        ).error((err) => {
+        console.log('error วะ ต่อ'+err);
+      });
     },
     refresh(){
       console.log('refesh');
@@ -373,5 +335,4 @@ export default {
 .my-well {
   background-color: #f7f7f7
 }
-
 </style>
