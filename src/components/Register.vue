@@ -18,9 +18,14 @@
         <div class="form-group">
           <input type="password" class="form-control" placeholder="password" v-model="password">
         </div>
-        <button class="btn btn-primary btn-block" @click="method()">Create an account</button>
+        <button class="btn btn-default btn-block" @click="method()">Create an account</button>
       </div>
     </div>
   </div>
 
 </template>
+<style>
+.btn-default{
+  background: #f1f1f1;
+}
+</style>

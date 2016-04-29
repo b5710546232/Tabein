@@ -1,21 +1,25 @@
 <template>
   <div class="container-fluid">
+    <div class ="col-md-8 col-md-offset-2">
 
-    <div class="row">
+      <div class="row">
 
-      <div>
-        <div class="thumbnail">
-          <div class="col-md-4">
-            <p class="lead">Car ID : xxxxx</p>
-          </div>
-          <img class="img-responsive" src="http://placehold.it/800x300" alt="">
-          <div class="mytext">
-            <h4>Owner name : {{name}}</h4>
-            some message description
+        <div>
+          <div class="thumbnail">
+            <br>
+            <p class="lead">Vehicle profile</p>
+            <hr>
+            <div class="col-md-4">
+              <p class="lead">Car ID : xxxxx</p>
             </div>
-        </div>
+            <img class="img-responsive" src="http://placehold.it/800x300" alt="">
+            <div class="mytext">
+              <h4>Owner name : {{name}}</h4>
+              some message description
+            </div>
+          </div>
 
-        <div class="well well_white">
+          <div class="well well_white">
             <div class="ratings">
               <h5>Ratings and reviews</h5>
               <p class="pull-right">number reviews</p>
@@ -30,43 +34,43 @@
                 <div class = "star">xxxxxx </div>
               </p>
             </div>
-        </div>
+          </div>
 
-        <div class="well">
-          <hr>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Write a comment ..." v-model="comment_text"  @keyup.enter = "addComment" autofocus>
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button" @click = "addComment">comment</button>
-            </span>
-          </div><!-- /input-group -->
-          <hr>
-        </div>
-        <!-- comments -->
-        <div v-for="comment of comments">
-          <div class="well well_white">
-            <div class="row">
-              <div class="col-md-12">
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star-empty"></span>
-                <br>
-                {{username}}
-                <br>
-                <span class="pull-right">{{time_since_post}}</span>
-                {{ comment.text }}
+          <div class="well">
+            <hr>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Write a comment ..." v-model="comment_text"  @keyup.enter = "addComment" autofocus>
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" @click = "addComment">comment</button>
+              </span>
+            </div><!-- /input-group -->
+            <hr>
+          </div>
+          <!-- comments -->
+          <div v-for="comment of comments">
+            <div class="well well_white">
+              <div class="row">
+                <div class="col-md-12">
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star-empty"></span>
+                  <br>
+                  {{username}}
+                  <br>
+                  <span class="pull-right">{{time_since_post}}</span>
+                  {{ comment.text }}
 
+                </div>
               </div>
             </div>
           </div>
+
+          <hr>
+
         </div>
-
-        <hr>
-
       </div>
-
     </div>
 
   </div>
@@ -78,11 +82,11 @@
   <footer>
     <div class="row">
       <div class="col-lg-12">
-        <p>Tabien web data project 2015</p>
+        <hr>
+        <p>Tabien web database SKE project 2016</p>
       </div>
     </div>
   </footer>
-
 </div>
 </template>
 
@@ -114,5 +118,11 @@ export default {
 }
 .mytext{
   margin-left: 1%;
+}
+.thumbnail{
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top:2%;
+  padding-bottom: 2%;
 }
 </style>

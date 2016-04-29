@@ -14,7 +14,7 @@
               <input class="form-control" placeholder="Password" name="password" type="password" value="">
             </div>
             <!-- Change this to a button or input when using this as a form -->
-            <a v-link="'/home'" class="btn btn-primary btn-block">Login</a>
+            <a v-link="'/home'" class="btn btn-default btn-block">Login</a>
           </fieldset>
         </form>
       </div>
@@ -36,3 +36,8 @@ export default {
   }
 }
 </script>
+<style>
+.btn-default{
+  background: #f1f1f1;
+}
+</style>

@@ -30,6 +30,17 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    <!-- Footer -->
+    <footer>
+      <div class="row">
+        <div class="col-lg-12">
+          <hr>
+          <p>Tabien web database SKE project 2016</p>
+        </div>
+      </div>
+    </footer>
+  </div>
 </template>
 <script>
 export default {

@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Tabein</a>
@@ -38,7 +38,7 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    <div class="container">
+    <div class="container view">
       <router-view></router-view>
     </div>
   </div>
@@ -58,3 +58,8 @@ export default {
   }
 }
 </script>
+<style>
+.view{
+  padding-top:5%;
+}
+</style>
