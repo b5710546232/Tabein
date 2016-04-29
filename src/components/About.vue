@@ -18,7 +18,7 @@
       <br>
       <h5>Benjapol Worakan 571054xxxx</h5>
       <br>
-      <h5>Mikko  571054xxxx</h5>
+      <h5>Mikko Salenius 571054xxxx</h5>
   </div>
 </div>
 </template>
