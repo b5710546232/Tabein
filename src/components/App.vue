@@ -15,7 +15,7 @@
         <form class="navbar-form navbar-left">
           <div class="form-group"  style="display:inline;">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search Tabein " >
+              <input type="text" class="form-control" placeholder="Search Tabien " >
               <!-- <span class="input-group-btn"> -->
               <!-- <button v-link="'/vehicle'" class="btn btn-default" type="button">Go!</button> -->
               <!-- <span class="input-group-addon btn"><span class="glyphicon glyphicon-search"></span></span> -->
@@ -41,6 +41,21 @@
     <div class="container view">
       <router-view></router-view>
     </div>
+    <!-- /.container -->
+    <div class="container footer">
+      <!-- Footer -->
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <hr>
+            <p>Tabien © project DATABASE 2016</p>
+            <div class="col-md-12"></div>
+            <a class = "pointer">Thailand (TH)</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- /.container end -->
   </div>
 </template>
 <script>
@@ -59,6 +74,10 @@ export default {
 }
 </script>
 <style>
+.container {
+  /*background-image: url('https://c2.staticflickr.com/6/5146/5578394538_69bb8a0cca_b.jpg');
+  background-repeat: no-repeat;*/
+}
 .view{
   padding-top:5%;
 }
