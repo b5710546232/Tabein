@@ -1,4 +1,105 @@
 <template>
+  <div class="container">
+    <div class ="col-md-8 col-md-offset-2">
+
+
+  <!-- Trigger the modal with a button -->
+  <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add new Vehicle</h4>
+        </div>
+        <div class="modal-body">
+          <div class="input-group col-md-8">
+            <span class="input-group-addon"> First Block &nbsp;&nbsp;&nbsp;&nbsp;   </span>
+            <input class="form-control" type="text" v-model="inputFirst" placeholder="Input first block">
+          </div>
+
+          <br>
+          <div class="input-group col-md-8">
+            <span class="input-group-addon"> Second Block </span>
+            <input class="form-control" type="text" v-model="inputSecond" placeholder="Input Second Block block">
+          </div>
+          <br>
+
+          <div class = "input-group  col-md-8">
+            <span class="input-group-addon "> Province&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+            <!-- <input type = "text" class = "form-control"> -->
+            <div class = "input-group-btn">
+
+              <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
+              data-toggle = "dropdown">
+               {{province_text}}
+              <span class = "caret"></span>
+            </button>
+
+            <ul class = "dropdown-menu pull-right scrollable-menu">
+              <li class="pointer" v-for = "item in provinces"><a  @click = "clickGetLocation(provinces[$index].name)" >{{item.name}}</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+
+        </div><!-- /input-group -->
+
+        <br>
+        <div class="input-group col-md-8">
+          <span class="input-group-addon"> Color &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+          <input class="form-control" type="text" v-model="inputColor" placeholder="Input color">
+        </div>
+        <br>
+
+        <div class="input-group col-md-8">
+          <span class="input-group-addon"> Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+          <input class="form-control" type="text" v-model="inputBrand" placeholder="Input brand">
+        </div>
+        <br>
+
+        <div class="input-group col-md-8">
+          <span class="input-group-addon"> Make&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+          <input class="form-control" type="text" v-model="inputMake" placeholder="Input make">
+        </div>
+        <br>
+
+        <!-- model-select -->
+        <div class = "input-group  col-md-8">
+          <span class="input-group-addon "> Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+          <div class = "input-group-btn">
+            <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
+            data-toggle = "dropdown">
+             {{model_text}}
+            <span class = "caret"></span>
+          </button>
+
+          <ul class = "dropdown-menu pull-right scrollable-menu">
+            <li v-for = "item in models"><a  @click = "clickGetModel([$index])" >Brand : {{item.brand}} Make : {{item.make}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+
+      </div><!-- /input-group -->
+      <!-- end model-select -->
+      <br>
+
+      </div><!-- end body -->
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" @click="clickAddModel(inputFirst,inputSecond,inputColor)" >Confirm</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+
+      <!-- end modal -->
+
+
+
+
+    </div>
+  </div>
     <div class="row">
           <p class="lead">Profile . . .</p>
       <div>
@@ -24,7 +125,8 @@
           </div>
         </div>
 
-      <div>
+      <!-- add vehicle old -->
+      <!-- <div>
           <p class="lead">Add vehicle</p>
           <hr>
           <div class="form">
@@ -37,7 +139,6 @@
 
           <div class="">
             Province :
-            <!-- <input class="form-control" type="text" v-model="inputProvince" placeholder="Input province"> -->
       <div class="dropdown">
       <button class="dropdown-toggle" type="button" data-toggle="dropdown">
       {{province_text}}
@@ -64,22 +165,32 @@
           {{model_text}}
           <span class="caret"></span></button>
           <ul class="dropdown-menu scrollable-menu">
-            <li v-for = "item in models"><a  @click = "clickGetModel([$index])" >Brand : {{item.brand}} Make : {{item.make}}
-          </a>
-            </li>
+             <li v-for = "item in models"><a  @click = "clickGetModel([$index])" >Brand : {{item.brand}} Make : {{item.make}}</a></li>
           </ul>
         </div>
 
         </div>
           <hr>
-        </div>
-
+        </div> -->
+        <!-- add vehicle old -->
       </div>
 
     </div>
 
-    <button class="btn btn-primary btn-block" @click="clickAddModel(inputFirst,inputSecond,inputColor)">add vehicle</button>
+  <!-- old-virsion -->
+    <!-- <button class="btn btn-primary btn-block" @click="clickAddModel(inputFirst,inputSecond,inputColor)">add vehicle</button> -->
+    <!-- end-old-virsion -->
 
+<!-- new-version -->
+    <div class="col-md-3"></div>
+    <div class="input-group col-md-6">
+      <!-- <button class="btn btn-default btn-block" @click="clickAddModel(inputFirst,inputSecond,inputColor)">add vehicle</button> -->
+      <button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#myModal">Add Vehicle</button>
+    </div>
+    <div class="col-md-3"></div>
+    <!-- end new-version -->
+
+  </div>
   </div>
   <!-- /.container -->
   <div class="container">
@@ -135,6 +246,7 @@ export default {
   },
   methods: {
     clickAddModel(first,second,color){
+      console.log(" add model");
       if( this.model_text != "Model" && this.province_text != "Province"
           && first != "" && second != "" && color != ""){
         console.log("will add");
@@ -239,4 +351,13 @@ export default {
   max-height:200px;
   overflow-x: hidden;
 }
+.pointer{
+  cursor: pointer;
+}
+.caret {
+  position: absolute;
+  left: 90%;
+  top: 45%;
+}
+
 </style>

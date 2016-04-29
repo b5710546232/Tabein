@@ -14,6 +14,8 @@ import Test from './components/Test.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
+import Temp from './components/temp.vue'
+
 Vue.use(VueRouter);
 Vue.use(VueResource);
 export const router = new VueRouter();
@@ -50,6 +52,9 @@ router.map({
   },
   '/addVehicle':{
     component:AddVehicle
+  },
+  '/temp':{
+    component:Temp
   }
 });
 // redirect to home if any routes are unmatched

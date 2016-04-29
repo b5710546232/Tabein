@@ -17,20 +17,20 @@
           </div>
 
           <br>
-          <div class="input-group col-md-8">
+          <div class="input-group col-md-6">
             <span class="input-group-addon"> Second Block </span>
             <input class="form-control" type="text" v-model="inputSecond" placeholder="Input Second Block block">
           </div>
           <br>
 
-          <div class = "input-group  col-md-8">
+          <div class = "input-group  col-md-6">
             <span class="input-group-addon "> Province&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
             <!-- <input type = "text" class = "form-control"> -->
             <div class = "input-group-btn">
 
               <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
               data-toggle = "dropdown">
-              {{provnince_text}}
+              {{province_text}}
               <span class = "caret"></span>
             </button>
 
@@ -115,7 +115,7 @@ export default {
       text1:"",
       text2:"",
       msg:"",
-      provnince_text:"Province",
+      province_text:"Province",
       showText:"",
       provinces:[{name:"no1"},{name:"no2"}],
       selectOptions: [
