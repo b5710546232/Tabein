@@ -72,6 +72,31 @@
       </div><!-- /input-group -->
       <!-- end model-select -->
       <br>
+      <button class="btn btn-defaul" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  add new model
+</button>
+<div class="collapse" id="collapseExample">
+  <br>
+  <!-- add new model -->
+  <div class="well my-well">
+
+    <div class="input-group col-md-8">
+      <span class="input-group-addon"> Brand &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+      <input class="form-control" type="text" v-model="inputBrand" placeholder="Input color">
+    </div>
+    <br>
+    <div class="input-group col-md-8">
+      <span class="input-group-addon"> Make &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+      <input class="form-control" type="text" v-model="inputMake" placeholder="Input color">
+    </div>
+
+<br>
+<div class="input-group col-md-8">
+    <button type="button" class="btn btn-default col-md-4" data-dismiss="modal" @click="" >Confirm</button>
+    </div>
+<br>
+  </div>
+</div>
 
       </div><!-- end body -->
 
@@ -346,6 +371,9 @@ export default {
   position: absolute;
   left: 90%;
   top: 45%;
+}
+.my-well {
+  background-color: #f7f7f7
 }
 
 </style>
