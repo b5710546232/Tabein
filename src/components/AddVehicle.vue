@@ -1,103 +1,105 @@
 <template>
   <div class="container-fluid">
     <div class ="col-md-8 col-md-offset-2">
-    <div class="row">
-      <div class="well well_white">
-        <p class="lead">Add vehicle</p>
-        <hr>
-        <br>
-        <div class=""> Firstname &nbsp;: {{firstname}}</div>
-        <div class=""> Lastname &nbsp;: {{lastname}}</div>
-        <div class=""> Location&nbsp;&nbsp;&nbsp; : {{location}}</div>
-        <br>
-        <br>
-        <div class="input-group col-md-8">
-          <span class="input-group-addon"> First Block &nbsp;&nbsp;&nbsp;&nbsp;   </span>
-          <input class="form-control" type="text" v-model="inputFirst" placeholder="Input first block">
-        </div>
+      <div class="row">
+        <div class="well well_white">
+          <p class="lead">Add vehicle</p>
+          <hr>
+          <br>
+          <div class=""> Firstname &nbsp;: {{firstname}}</div>
+          <div class=""> Lastname &nbsp;: {{lastname}}</div>
+          <div class=""> Location&nbsp;&nbsp;&nbsp; : {{location}}</div>
+          <br>
+          <br>
+          <div class="input-group col-md-8">
+            <span class="input-group-addon"> First Block &nbsp;&nbsp;&nbsp;&nbsp;   </span>
+            <input class="form-control" type="text" v-model="inputFirst" placeholder="Input first block">
+          </div>
 
-        <br>
-        <div class="input-group col-md-8">
-          <span class="input-group-addon"> Second Block </span>
-          <input class="form-control" type="text" v-model="inputSecond" placeholder="Input Second Block block">
-        </div>
-        <br>
+          <br>
+          <div class="input-group col-md-8">
+            <span class="input-group-addon"> Second Block </span>
+            <input class="form-control" type="text" v-model="inputSecond" placeholder="Input Second Block block">
+          </div>
+          <br>
 
-        <div class = "input-group  col-md-8">
+          <div class = "input-group  col-md-8">
             <span class="input-group-addon "> Province&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-          <!-- <input type = "text" class = "form-control"> -->
-          <div class = "input-group-btn">
+            <!-- <input type = "text" class = "form-control"> -->
+            <div class = "input-group-btn">
 
-            <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
-            data-toggle = "dropdown">
-            {{provnince_text}}
-            <span class = "caret"></span>
-          </button>
+              <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
+              data-toggle = "dropdown">
+              {{provnince_text}}
+              <span class = "caret"></span>
+            </button>
 
-          <ul class = "dropdown-menu pull-right scrollable-menu">
-            <li class="pointer" v-for = "item in provinces"><a  @click = "clickGetLocation(provinces[$index].name)" >{{item.name}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
+            <ul class = "dropdown-menu pull-right scrollable-menu">
+              <li class="pointer" v-for = "item in provinces"><a  @click = "clickGetLocation(provinces[$index].name)" >{{item.name}}</a></li>
+            </ul>
+          </div><!-- /btn-group -->
 
-      </div><!-- /input-group -->
+        </div><!-- /input-group -->
 
 
-      <!-- <div class="form-group"> -->
+        <!-- <div class="form-group"> -->
         <!-- Province : -->
         <!-- <input class="form-control" type="text" v-model="inputProvince" placeholder="Input province"> -->
         <!-- <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-            {{provnince_text}}
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu scrollable-menu">
-              <li class="pointer" v-for = "item in provinces"><a  @click = "clickGetLocation(provinces[$index].name)" >{{item.name}}</a></li>
-            </ul>
-          </div>
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+        {{provnince_text}}
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu scrollable-menu">
+        <li class="pointer" v-for = "item in provinces"><a  @click = "clickGetLocation(provinces[$index].name)" >{{item.name}}</a></li>
+      </ul>
+    </div>
 
-        </div> -->
+  </div> -->
 
 
-        <br>
-        <div class="input-group col-md-8">
-          <span class="input-group-addon"> Color &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-          <input class="form-control" type="text" v-model="inputColor" placeholder="Input color">
-        </div>
-        <br>
+  <br>
+  <div class="input-group col-md-8">
+    <span class="input-group-addon"> Color &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+    <input class="form-control" type="text" v-model="inputColor" placeholder="Input color">
+  </div>
+  <br>
 
-        <div class="input-group col-md-8">
-          <span class="input-group-addon"> Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
-          <input class="form-control" type="text" v-model="inputBrand" placeholder="Input brand">
-        </div>
-        <br>
+  <div class="input-group col-md-8">
+    <span class="input-group-addon"> Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+    <input class="form-control" type="text" v-model="inputBrand" placeholder="Input brand">
+  </div>
+  <br>
 
-        <div class="input-group col-md-8">
-          <span class="input-group-addon"> Make&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
-          <input class="form-control" type="text" v-model="inputMake" placeholder="Input make">
-        </div>
-        <br>
+  <div class="input-group col-md-8">
+    <span class="input-group-addon"> Make&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+    <input class="form-control" type="text" v-model="inputMake" placeholder="Input make">
+  </div>
+  <br>
   <div class="col-md-3"></div>
-<div class="input-group col-md-6">
-        <button class="btn btn-default btn-block" @click="clickAddModel(inputBrand,inputMake,inputI)">add vehicle</button>
-        </div>
-        <div class="col-md-3"></div>
+  <div class="input-group col-md-6">
+    <button class="btn btn-default btn-block" @click="clickAddModel(inputBrand,inputMake,inputI)">add vehicle</button>
+  </div>
+  <div class="col-md-3"></div>
 
+  <!-- well_white -->
+</div>
+
+</div><!-- row -->
+
+<!--col-md-8 col-md-offset-2-->
+</div>
+</div>
+<div class="container">
+  <!-- Footer -->
+  <footer>
+    <div class="row">
+      <div class="col-lg-12">
+        <hr>
+        <p>Tabien web database SKE project 2016</p>
       </div>
-    </div><!-- well well_white -->
-
-
-  </div>
-  </div>
-  <div class="container">
-    <!-- Footer -->
-    <footer>
-      <div class="row">
-        <div class="col-lg-12">
-          <hr>
-          <p>Tabien web database SKE project 2016</p>
-        </div>
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
+</div>
 
 </template>
 
@@ -181,9 +183,9 @@ export default {
       cursor: pointer;
     }
     .caret {
-    position: absolute;
-    left: 90%;
-    top: 45%;
-}
+      position: absolute;
+      left: 90%;
+      top: 45%;
+    }
 
     </style>

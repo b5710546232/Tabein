@@ -1,9 +1,7 @@
 <template>
   <div class="container-fluid">
-
-    <div class="row">
-      <div>
-
+    <div class ="col-md-8 col-md-offset-2">
+      <div class="row">
         <div class="well well_white">
           <!-- <img class="img-responsive" src="http://placehold.it/800x300" alt=""> -->
           <p class="lead">Profile name</p>
@@ -26,12 +24,13 @@
           </div>
         </div>
 
-
+        <!-- row -->
       </div>
 
     </div>
-
+    <!-- col-md-8 col-md-offset-2 -->
   </div>
+
   <!-- /.container -->
   <div class="container">
     <!-- Footer -->
@@ -118,24 +117,24 @@ export default {
         this.firstname = data[0].firstname;
         this.lastname = data[0].lastname;
       });
-  },
-  initVehicle(){
-    this.$http
-    .get('http://localhost:7777/vehicle/1', (data) => {
-      console.log(data);
-      console.log("vehicle"+data[0].id);
-      this.vehicles = data;
-    });
-  },
-  numVehicle(){
-    this.$http
-    .get('http://localhost:7777/numvehicle/1', (data) => {
-      console.log(data);
-      console.log("count vec"+data[0].num);
-      this.count = data[0].num;
-    });
+    },
+    initVehicle(){
+      this.$http
+      .get('http://localhost:7777/vehicle/1', (data) => {
+        console.log(data);
+        console.log("vehicle"+data[0].id);
+        this.vehicles = data;
+      });
+    },
+    numVehicle(){
+      this.$http
+      .get('http://localhost:7777/numvehicle/1', (data) => {
+        console.log(data);
+        console.log("count vec"+data[0].num);
+        this.count = data[0].num;
+      });
+    }
   }
-}
 }
 
 </script>
