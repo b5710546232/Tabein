@@ -72,12 +72,11 @@
           <div class="">
             Province :
             <!-- <input class="form-control" type="text" v-model="inputProvince" placeholder="Input province"> -->
-            <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+      <div class="dropdown">
+      <button class="dropdown-toggle" type="button" data-toggle="dropdown">
       {{provnince_text}}
       <span class="caret"></span></button>
-
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu scrollable-menu">
         <li v-for = "item in provinces"><a  @click = "clickGetLocation(provinces[$index].name)" >{{item.name}}
           <!-- <li><a  @click = "clickGetLocation(provinces[$index].name)">{{item.name}}</a></li> -->
   </a>
@@ -137,7 +136,7 @@ export default {
       text1:"",
       text2:"",
       msg:"",
-      provnince_text:"Select province",
+      provnince_text:"Province",
       showText:"",
       provinces:null,
       selectOptions: [
@@ -195,3 +194,10 @@ export default {
 }
 }
 </script>
+<style>
+.scrollable-menu{
+  height:auto;
+  max-height:200px;
+  overflow-x: hidden;
+}
+</style>
