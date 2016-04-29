@@ -143,4 +143,7 @@ export default {
 .well_white{
   background-color: rgb(255, 255, 255)
 }
+.pointer{
+  cursor: pointer;
+}
 </style>

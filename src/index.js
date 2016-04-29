@@ -59,10 +59,11 @@ router.map({
 });
 // redirect to home if any routes are unmatched
 router.redirect({
+  '*':'/vehicle'
   // '*':'/home'
   // '*':'/dashboard'
   // '*': '/addModel'
-  '*' : '/addVehicle'
+  // '*' : '/addVehicle'
 });
 
 // start the app
