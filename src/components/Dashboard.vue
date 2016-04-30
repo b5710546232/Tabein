@@ -125,7 +125,7 @@
         </div><!-- end body -->
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" @click="clickAddVehicle(inputFirst,inputSecond,inputColor)" >Confirm</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" @click="clickEditVehicle($index,inputFirst,inputSecond,inputColor)" >Confirm</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
       </div>
@@ -303,7 +303,7 @@
                 <div class="col-md-12"> Brand     : {{item.brand}}  Make : {{item.make}}  </div>
                 <div class = "col-md-10"></div>
                 <div class="input-group col-md-2">
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editModal">Edit Vehicle</button>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editModal" @click = "setEditIndex($index)">Edit Vehicle</button>
                   </div>
                 </div>
               </div>
@@ -331,6 +331,7 @@
 export default {
   data() {
     return {
+      editIndex:0,
       userId: 81,
       firstname:"no connection",
       lastname:"no connection",
@@ -353,17 +354,18 @@ export default {
       models: null,
       vehicles:[
         {
-          first_block:"-",
-          second_block:"",
-          color:"-",
-          province:"-",
-          brand:"-",
-          make:"-",
+          // id: "",
+          // first_block:"-",
+          // second_block:"",
+          // color:"-",
+          // province:"-",
+          // brand:"-",
+          // make:"-",
         }]
       }
     },
     created () {
-      console.log("Dash created");
+      console.log("Dash created123");
       this.refresh();
       this.firstname = 0;
     },
@@ -408,6 +410,36 @@ export default {
       this.province_text = "Province";
       this.model_text = "Model";
       this.count = this.vehicles.length;
+    },
+    clickEditVehicle(index,first,second,color){
+      console.log('confirm2'+index);
+      var vehicle = {
+        id: this.editIndex,
+        vehiclemodel_id: this.vehiclemodel_id,
+        user_id: this.userId,
+        location: this.location,
+        first_block: first,
+        second_block: second,
+        color: color,
+        province: this.province_text,
+      };
+      this.$http.post("http://localhost:7777/updatevehicle", vehicle, (data) => {
+        console.log('success')
+      }
+      ).error((err) => {
+        console.log('error วะ ต่อ'+err);
+      });
+    },
+    setEditIndex(index){
+      this.editIndex = this.vehicles[index].id;
+      console.log(this.editIndex);
+      this.inputFirst = this.vehicles[index].first_block;
+      this.inputSecond = this.vehicles[index].second_block;
+      this.inputColor = this.vehicles[index].color;
+      this.province_text = this.vehicles[index].province;
+      var b = this.vehicles[index].brand;
+      var m = this.vehicles[index].make;
+      this.model_text = "Brand: "+b+"Make: "+m;
     },
     clickAddModel(b,m){
       var model = {
@@ -479,7 +511,8 @@ export default {
     this.$http
     .get('http://localhost:7777/vehicle/'+id, (data) => {
       console.log(data);
-      console.log("vehicle"+data[0].id);
+      console.log("vehiclelkjkljkl"+data[0].id);
+      console.log("vehiclelkjkljkl"+data[1].id);
       this.vehicles = data;
     });
   },
