@@ -15,7 +15,7 @@
               <div class="col-md-4">
               </div>
               <div class="col-md-4">
-                <img class="img-responsive" src="http://placehold.it/150x150" alt="">
+                <img class="img-responsive" src={{imageURL}} alt="">
               </div>
 
               <div class="mytext col-md-5">
@@ -222,6 +222,7 @@ export default {
       ratings: [1, 2, 3, 4, 5],
       emptystars:[1],
       comment_text:"",
+      imgURL:"http://placehold.it/150x150",
       msg:"",
       time_since_post:"x day ago",
       comments:[],
@@ -249,6 +250,7 @@ export default {
     this.initProgress3();
     this.initProgress2();
     this.initProgress1();
+    this.imgURL = "http://carsport.online/wp-content/uploads/2016/03/dodge-sports-car-names-FotosdeCarrosDeportivos-150x150.jpg"
   },
   watch:{
     // 'comments': function (val, oldVal) {
@@ -264,6 +266,9 @@ export default {
     progressWidth_4(){
       return "width:" + (this.progress_4/this.total_ratting)*100 + "%";
 
+    },
+    imageURL(){
+      return this.imgURL;
     },
     progressWidth_3(){
       return "width:" + (this.progress_3/this.total_ratting)*100 + "%";
