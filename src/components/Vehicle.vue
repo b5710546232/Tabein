@@ -49,73 +49,123 @@
               {{total_ratting}} rating
             </div>
             <div class="col-md-7">
-              5  <span class="glyphicon glyphicon-star"></span>
-              <br>
-              4 <span class="glyphicon glyphicon-star"></span>
-              <br>
-              3 <span class="glyphicon glyphicon-star"></span>
-              <br>
-              2 <span class="glyphicon glyphicon-star"></span>
-              <br>
-              1 <span class="glyphicon glyphicon-star"></span>
-              <br>
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="col-md-2">
+                    5  <span class="glyphicon glyphicon-star"></span>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-info" :style=" progressWidth_5">
+                        <span>{{ progress_5 }}%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-2">
+                    4  <span class="glyphicon glyphicon-star"></span>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-info" :style=" progressWidth_4">
+                        <span>{{ progress_4 }}%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-2">
+                    3  <span class="glyphicon glyphicon-star"></span>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-info" :style=" progressWidth_3">
+                        <span>{{ progress_3 }}%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-2">
+                    2  <span class="glyphicon glyphicon-star"></span>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-info" :style=" progressWidth_2">
+                        <span>{{ progress_2 }}%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-2">
+                    1  <span class="glyphicon glyphicon-star"></span>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-danger" :style=" progressWidth_1">
+                        <span>{{ progress_1 }}%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             </div>
 
           </div>
         </div>
 
         <div class="well">
-            <div class="row review-row"><div class="col-md-12">Review by {{firstname}} {{lastname}} ({{username}})</div></div>
-            <div class="row review-row">
-              <div class="col-md-12">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Write a review ..." v-model="comment_text"  @keyup.enter = "addRate" autofocus>
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" @click = "addRate()">submit</button>
-                  </span>
-                </div>
-              </div>
-            </div><!-- /input-group -->
-            <div class="row review-row">
-              <div class="col-md-12 help-block rate-car">
-                Rate this vehicle
-              </div>
-              <div class="col-md-12">
-                <div class="star-rating">
-                  <label class="star-rating__star" v-for="rating in ratings"
-                  :class="{'is-selected': ((value >= rating) && value != null), 'is-disabled': disabled}"
-                  v-on:click="set(rating)" v-on:mouseover="star_over(rating)" v-on:mouseout="star_out">
-                  <input class="star-rating star-rating__checkbox" type="radio" :value="rating" :name="name"
-                  v-model="value" :disabled="disabled">★</label>
-                </div>
+          <div class="row review-row"><div class="col-md-12">Review by {{firstname}} {{lastname}} ({{username}})</div></div>
+          <div class="row review-row">
+            <div class="col-md-12">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Write a review ..." v-model="comment_text"  @keyup.enter = "addRate" autofocus>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" @click = "addRate()">submit</button>
+                </span>
               </div>
             </div>
-          </div><!-- well -->
-
-          <!-- comments -->
-          <div v-for="comment of comments">
-            <div class="well well_white">
-              <div class="row">
-                <div class="col-md-12">
-                  <label class="star-rating__star" v-for="rating in ratings"
-                  :class="{'is-selected': ((comment.rattings >= rating) && value != null), 'is-disabled': disabled}">★</label>
-                  <br>
-                  {{username}}
-                  <br>
-                  <span class="pull-right">{{time_since_post}}</span>
-                  {{ comment.text }}
-
-                </div>
+          </div><!-- /input-group -->
+          <div class="row review-row">
+            <div class="col-md-12 help-block rate-car">
+              Rate this vehicle
+            </div>
+            <div class="col-md-12">
+              <div class="star-rating">
+                <label class="star-rating__star" v-for="rating in ratings"
+                :class="{'is-selected': ((value >= rating) && value != null), 'is-disabled': disabled}"
+                v-on:click="set(rating)" v-on:mouseover="star_over(rating)" v-on:mouseout="star_out">
+                <input class="star-rating star-rating__checkbox" type="radio" :value="rating" :name="name"
+                v-model="value" :disabled="disabled">★</label>
               </div>
             </div>
           </div>
+        </div><!-- well -->
 
+        <!-- comments -->
+        <div v-for="comment of comments">
+          <div class="well well_white">
+            <div class="row">
+              <div class="col-md-12">
+                <label class="star-rating__star" v-for="rating in ratings"
+                :class="{'is-selected': ((comment.rattings >= rating) && value != null), 'is-disabled': disabled}">★</label>
+                <br>
+                {{username}}
+                <br>
+                <span class="pull-right">{{time_since_post}}</span>
+                {{ comment.text }}
+
+              </div>
+            </div>
+          </div>
         </div>
 
-
       </div>
+
+
     </div>
   </div>
+</div>
 </template>
 
 
@@ -136,6 +186,11 @@ export default {
       rate: 5,//temp
       owner_firstname: '---',
       owner_lastname: '---',
+      progress_5:0,
+      progress_4:0,
+      progress_3:0,
+      progress_2:0,
+      progress_1:0,
       brand: 'no connection',
       make: '',
       color: '',
@@ -164,6 +219,7 @@ export default {
     this.initRate(this.vehicle_id);
     this.numRate(this.vehicle_id);
     this.avgRate(this.vehicle_id);
+    this.initProgessBar(this.vehicle_id);
   },
   watch:{
     // 'comments': function (val, oldVal) {
@@ -171,14 +227,28 @@ export default {
     //    this.initRate(this.vehicle_id);
     //  },
   },
-  // computed:{
-  //   getAvgRate(){
-  //     return this.avg_ratting;
-  //   }
-  //   getTotalRate(){
-  //     return this.total_ratting;
-  //   }
-  // },
+  computed:{
+    progressWidth_5(){
+      return "width:" + (this.progress_5/this.total_ratting)*100 + "%";
+
+    },
+    progressWidth_4(){
+      return "width:" + (this.progress_4/this.total_ratting)*100 + "%";
+
+    },
+    progressWidth_3(){
+      return "width:" + (this.progress_3/this.total_ratting)*100 + "%";
+
+    },
+    progressWidth_2(){
+      return "width:" + (this.progress_2/this.total_ratting)*100 + "%";
+
+    },
+    progressWidth_1(){
+      return "width:" + (this.progress_1/this.total_ratting)*100 + "%";
+
+    }
+  },
   methods: {
     addRate(){
       console.log("text"+this.comment_text);
@@ -193,20 +263,44 @@ export default {
       };
       this.$http
       .post('http://localhost:7777/newrating', rate, (data) => {
-        this.initRate(this.vehicle_id);
       });
-      // this.comments.unshift({text:this.comment_text , rattings:this.value});
+      this.comments.unshift({text:this.comment_text , rattings:this.value});
       this.comment_text='';
-<<<<<<< HEAD
-      this.value = 1;
-      // this.avg_ratting = (this.avg_ratting+this.rate)/2;
-      // this.total_ratting = this.comments.length;
-=======
       var temp = (parseInt(this.avg_ratting)+parseInt(this.rate))/2;
       this.avg_ratting = temp;
       this.total_ratting = this.comments.length;
       this.value = 1;
->>>>>>> b197e6bdcbae7fdeea3982977d49f551309f1db3
+      switch (this.value) {
+        case 5:
+        this.progress_5 ++;
+        break;
+
+        case 4:
+        this.progress_4 ++;
+        break;
+
+        case 3:
+        this.progress_3 ++;
+        break;
+
+        case 2:
+        this.progress_2 ++;
+        break;
+
+        case 1:
+        this.progress_1 ++;
+        break;
+        default:
+
+      }
+
+    },
+    initProgessBar(id){
+      this.progress_5 = 50;
+      this.progress_4  = 40;
+      this.progress_3  = 30;
+      this.progress_2  = 20;
+      this.progress_1 = 10;
     },
     initVehicle(id){
       // console.log("vehicle"+id);
@@ -249,10 +343,10 @@ export default {
       // this.comments = [];
       this.$http
       .get('http://localhost:7777/initRate/'+vid, (data) => {
-          for(var i=0 ; i<data.length ; i++){
-            // console.log("RATE"+data[i].message);
-            this.comments.unshift({text:data[i].message, rattings:data[i].rate});
-          }
+        for(var i=0 ; i<data.length ; i++){
+          // console.log("RATE"+data[i].message);
+          this.comments.unshift({text:data[i].message, rattings:data[i].rate});
+        }
       });
       // this.$http.get('http://localhost:7777/initRate/'+vid, data).then(function(res){
       //   console.log('succuess');
@@ -292,14 +386,14 @@ export default {
     numRate(vid){
       this.$http
       .get('http://localhost:7777/numRate/'+vid, (data) => {
-          this.total_ratting = data[0].num;
+        this.total_ratting = data[0].num;
       });
     },
     avgRate(vid){
       this.$http
       .get('http://localhost:7777/avgRate/'+vid, (data) => {
-          var x = data[0].avgRate;
-          this.avg_ratting = x.toFixed(1);
+        var x = data[0].avgRate;
+        this.avg_ratting = x.toFixed(1);
       });
     }
   }
