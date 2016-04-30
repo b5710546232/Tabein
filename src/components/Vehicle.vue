@@ -52,59 +52,83 @@
               <div class="row">
 
                 <div class="col-md-12">
+
+
+                  <div class="row">
                   <div class="col-md-2">
                     5  <span class="glyphicon glyphicon-star"></span>
+                    <!-- ★ -->
                   </div>
-                  <div class="col-md-10">
+                  <div class="col-md-8">
                     <div class="progress">
-                      <div class="progress-bar progress-bar-info" :style=" progressWidth_5">
-                        <span>{{ progress_5 }}%</span>
+                      <div class="progress-bar progress-bar-primary" :style=" progressWidth_5">
                       </div>
                     </div>
                   </div>
 
+                  <div class="col-md-2">
+                    <span>{{ progress_5 }}</span>
+                  </div>
+                  </div>
+
+                  <div class="row">
                   <div class="col-md-2">
                     4  <span class="glyphicon glyphicon-star"></span>
                   </div>
-                  <div class="col-md-10">
+                  <div class="col-md-8">
                     <div class="progress">
                       <div class="progress-bar progress-bar-info" :style=" progressWidth_4">
-                        <span>{{ progress_4 }}%</span>
                       </div>
                     </div>
                   </div>
+                  <div class="col-md-2">
+                      <span>{{ progress_4 }}</span>
+                  </div>
+                  </div>
 
+                  <div class="row">
                   <div class="col-md-2">
                     3  <span class="glyphicon glyphicon-star"></span>
                   </div>
-                  <div class="col-md-10">
+                  <div class="col-md-8">
                     <div class="progress">
-                      <div class="progress-bar progress-bar-info" :style=" progressWidth_3">
-                        <span>{{ progress_3 }}%</span>
+                      <div class="progress-bar progress-bar-success" :style=" progressWidth_3">
                       </div>
                     </div>
                   </div>
+                  <div class="col-md-2">
+                      <span>{{ progress_3 }}</span>
+                  </div>
+                  </div>
 
+                  <div class="row">
                   <div class="col-md-2">
                     2  <span class="glyphicon glyphicon-star"></span>
                   </div>
-                  <div class="col-md-10">
+                  <div class="col-md-8">
                     <div class="progress">
-                      <div class="progress-bar progress-bar-info" :style=" progressWidth_2">
-                        <span>{{ progress_2 }}%</span>
+                      <div class="progress-bar progress-bar-warning" :style=" progressWidth_2">
                       </div>
                     </div>
                   </div>
+                  <div class="col-md-2">
+                      <span>{{ progress_2 }}</span>
+                  </div>
+                  </div>
 
+                    <div class="row">
                   <div class="col-md-2">
                     1  <span class="glyphicon glyphicon-star"></span>
                   </div>
-                  <div class="col-md-10">
+                  <div class="col-md-8">
                     <div class="progress">
                       <div class="progress-bar progress-bar-danger" :style=" progressWidth_1">
-                        <span>{{ progress_1 }}%</span>
                       </div>
                     </div>
+                  </div>
+                  <div class="col-md-2">
+                      <span>{{ progress_1 }}</span>
+                  </div>
                   </div>
 
                 </div>
@@ -219,7 +243,12 @@ export default {
     this.initRate(this.vehicle_id);
     this.numRate(this.vehicle_id);
     this.avgRate(this.vehicle_id);
-    this.initProgessBar(this.vehicle_id);
+    // this.initProgessBar(this.vehicle_id);
+    this.initProgress5();
+    this.initProgress4();
+    this.initProgress3();
+    this.initProgress2();
+    this.initProgress1();
   },
   watch:{
     // 'comments': function (val, oldVal) {
@@ -269,7 +298,6 @@ export default {
       var temp = (parseInt(this.avg_ratting)+parseInt(this.rate))/2;
       this.avg_ratting = temp;
       this.total_ratting = this.comments.length;
-      this.value = 1;
       switch (this.value) {
         case 5:
         this.progress_5 ++;
@@ -291,17 +319,17 @@ export default {
         this.progress_1 ++;
         break;
         default:
-
       }
+      this.value = 1;
 
     },
-    initProgessBar(id){
-      this.progress_5 = 50;
-      this.progress_4  = 40;
-      this.progress_3  = 30;
-      this.progress_2  = 20;
-      this.progress_1 = 10;
-    },
+    // initProgessBar(id){
+    //   this.progress_5 = 50;
+    //   this.progress_4  = 40;
+    //   this.progress_3  = 30;
+    //   this.progress_2  = 20;
+    //   this.progress_1 = 10;
+    // },
     initVehicle(id){
       // console.log("vehicle"+id);
       this.$http
@@ -394,6 +422,36 @@ export default {
       .get('http://localhost:7777/avgRate/'+vid, (data) => {
         var x = data[0].avgRate;
         this.avg_ratting = x.toFixed(1);
+      });
+    },
+    initProgress5(){
+      this.$http
+      .get('http://localhost:7777/progressRate/5', (data) => {
+        this.progress_5 = data[0].proRate;
+      });
+    },
+    initProgress4(){
+      this.$http
+      .get('http://localhost:7777/progressRate/4', (data) => {
+        this.progress_4 = data[0].proRate;
+      });
+    },
+    initProgress3(){
+      this.$http
+      .get('http://localhost:7777/progressRate/3', (data) => {
+        this.progress_3 = data[0].proRate;
+      });
+    },
+    initProgress2(){
+      this.$http
+      .get('http://localhost:7777/progressRate/2', (data) => {
+        this.progress_2 = data[0].proRate;
+      });
+    },
+    initProgress1(){
+      this.$http
+      .get('http://localhost:7777/progressRate/1', (data) => {
+        this.progress_1 = data[0].proRate;
       });
     }
   }
