@@ -2,14 +2,155 @@
   <div class="container-fluid">
     <div class ="col-md-8 col-md-offset-2">
       <div class="row">
+
+
+        <!-- Modal Edit -->
+        <div class="modal fade" id="editModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Vehicle</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="input-group col-md-8">
+                      <span class="input-group-addon"> First Block &nbsp;&nbsp;&nbsp;&nbsp;   </span>
+                      <input class="form-control" type="text" v-model="inputFirst" placeholder="Input first block" maxlength="3">
+                    </div>
+                  <br>
+                  <div class="col-md-1"></div>
+                    <div class="input-group col-md-8">
+                      <span class="input-group-addon"> Second Block </span>
+                      <input class="form-control" type="text" v-model="inputSecond" placeholder="Input second block" maxlength="4">
+                    </div>
+                    <br>
+    <div class="col-md-1"></div>
+                    <div class = "input-group  col-md-8">
+                      <span class="input-group-addon "> Province&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                      <!-- <input type = "text" class = "form-control"> -->
+                      <div class = "input-group-btn">
+
+                        <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
+                        data-toggle = "dropdown">
+                        {{province_text}}
+                        <span class = "caret"></span>
+                      </button>
+
+                      <ul class = "dropdown-menu pull-right scrollable-menu">
+                        <li class="pointer" v-for = "item in provinces"><a  @click = "clickGetLocation(provinces[$index].name)" >{{item.name}}</a></li>
+                      </ul>
+                    </div><!-- /btn-group -->
+
+                  </div><!-- /input-group -->
+
+                  <br>
+                  <div class="col-md-1"></div>
+                  <div class="input-group col-md-8">
+                    <span class="input-group-addon"> Color &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                    <input class="form-control" type="text" v-model="inputColor" placeholder="Input color">
+                  </div>
+                  <br>
+  <div class="col-md-1"></div>
+                  <div class="input-group col-md-8">
+                    <span class="input-group-addon"> Image URL &nbsp;&nbsp;&nbsp; </span>
+                    <input class="form-control" type="text" v-model="inputImageURL" placeholder="Input color">
+                  </div>
+
+                  <br>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="col-md-1"></div>
+                      <div class="col-md-6"></div>
+                      <button class="btn btn-default col-md-2" @click="method()" v-link = "'/addVehicle'" >upload</button>
+                      <div class="col-md-4"></div>
+                    </div>
+                  </div>
+                  <br>
+
+                  <!-- model-select -->
+                  <div class="col-md-1"></div>
+                  <div class = "input-group  col-md-8">
+                    <span class="input-group-addon "> Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                    <div class = "input-group-btn">
+                      <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
+                      data-toggle = "dropdown">
+                      {{model_text}}
+                      <span class = "caret"></span>
+                    </button>
+
+                    <ul class = "dropdown-menu pull-right scrollable-menu">
+                      <li class ="pointer" v-for = "item in models"><a  @click = "clickGetModel([$index])" >Brand : {{item.brand}} Make : {{item.make}}</a></li>
+                    </ul>
+                  </div><!-- /btn-group -->
+
+                </div><!-- /input-group -->
+                <!-- end model-select -->
+                <br>
+                <div class="col-md-1"></div>
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  add new model
+                </button>
+                <div class="collapse" id="collapseExample">
+                  <br>
+                  <!-- add new model -->
+                  <div class="well my-well">
+
+                    <div class="input-group col-md-8">
+                      <span class="input-group-addon"> Brand &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                      <input class="form-control" type="text" v-model="inputBrand" placeholder="Input color">
+                    </div>
+                    <br>
+                    <div class="input-group col-md-8">
+                      <span class="input-group-addon"> Make &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                      <input class="form-control" type="text" v-model="inputMake" placeholder="Input color">
+                    </div>
+
+                    <br>
+                    <div class="input-group col-md-8">
+                      <button type="button" class="btn btn-success col-md-4" data-toggle="collapse"  data-target="#collapseExample" @click="clickAddModel(inputBrand,inputMake)" >Add model</button>
+                    </div>
+                    <br>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end body -->
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal" @click="clickAddVehicle(inputFirst,inputSecond,inputColor)" >Confirm</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+      </div>
+
+        <!-- end modal -->
+
         <div class="well well_white">
           <!-- <img class="img-responsive" src="http://placehold.it/800x300" alt=""> -->
           <p class="lead">Profile name</p>
           <hr>
-          <div class=""> name     : {{firstname}}</div>
-          <div class=""> lastname : {{lastname}}</div>
-          <div class=""> e-mail : {{email}}</div>
-          <div class=""> Number of cars : {{count}} cars</div>
+        <div class="row">
+          <div class="col-md-12 row">
+                      <div class="col-md-12"> name     : {{firstname}}</div>
+                      <div class="col-md-12">&nbsp;</div>
+                      <div class="col-md-12"> lastname : {{lastname}}</div>
+                      <div class="col-md-12">&nbsp;</div>
+                      <div class="col-md-12"> e-mail : {{email}}</div>
+                      <div class="col-md-12">&nbsp;</div>
+                      <div class="col-md-12"> Number of cars : {{count}} cars</div>
+                      <div class="col-md-12">&nbsp;</div>
+                      <div class="col-md-10"></div>
+                      <div class = "col-md-2"><button class="btn btn-default  btn-create" v-link="'/accountsetting'">Edit accout</button></div>
+          </div>
+        </div>
           <hr>
         </div>
         <div v-for="item in vehicles">

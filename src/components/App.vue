@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li><a v-link="'/home'">Home</a></li>
-            <li><a v-link = "'/vehicle'"><span class="glyphicon glyphicon-user"></span> {{username}}</a></li>
+            <li><a v-link = "'/dashboard'"><span class="glyphicon glyphicon-user"></span> {{username}}</a></li>
             <li><a v-link = "'/login'"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
             <li><a v-link = "'/register'"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a v-link = "'/login'"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
