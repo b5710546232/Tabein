@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" id="topbar" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Tabein</a>
@@ -79,9 +79,12 @@ export default {
   background-repeat: no-repeat;*/
 }
 .view{
-  padding-top:5%;
+  padding-top:7%;
 }
 .navbar{
   background-color: #eeecec;
+}
+#topbar{
+  box-shadow:0.5px 1px 10px 0.01px #888888;
 }
 </style>

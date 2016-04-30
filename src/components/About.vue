@@ -6,8 +6,7 @@
           <h1 class="panel-title">
             <div class="row">
               <div class="col-md-12">
-                <div class="col-md-4"></div>
-                <div class="text-2">About Us</div>
+                <div class="text-1-5">About Us</div>
               </div>
             </div>
         </h1>
@@ -68,7 +67,7 @@
 
 </template>
 <style >
-.text-2{
-font-size: 2em;
+.text-1-5{
+font-size: 1.5em;
 }
 </style>
