@@ -23,14 +23,14 @@
                     <span class="input-group-addon"> First Block &nbsp;&nbsp;&nbsp;&nbsp;   </span>
                     <input class="form-control" type="text" v-model="inputFirst" placeholder="Input first block" maxlength="3">
                   </div>
-                  <br>
-                  <div class="col-md-1"></div>
+                <br>
+                <div class="col-md-1"></div>
                   <div class="input-group col-md-8">
                     <span class="input-group-addon"> Second Block </span>
                     <input class="form-control" type="text" v-model="inputSecond" placeholder="Input second block" maxlength="4">
                   </div>
                   <br>
-                  <div class="col-md-1"></div>
+  <div class="col-md-1"></div>
                   <div class = "input-group  col-md-8">
                     <span class="input-group-addon "> Province&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
                     <!-- <input type = "text" class = "form-control"> -->
@@ -56,7 +56,7 @@
                   <input class="form-control" type="text" v-model="inputColor" placeholder="Input color">
                 </div>
                 <br>
-                <div class="col-md-1"></div>
+<div class="col-md-1"></div>
                 <div class="input-group col-md-8">
                   <span class="input-group-addon"> Image URL &nbsp;&nbsp;&nbsp; </span>
                   <input class="form-control" type="text" v-model="inputImageURL" placeholder="Input color">
@@ -125,189 +125,175 @@
         </div><!-- end body -->
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" @click="clickEditVehicle($index,inputFirst,inputSecond,inputColor)" >Confirm</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" @click="clickAddVehicle(inputFirst,inputSecond,inputColor)" >Confirm</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
-  </div>
+    </div>
 
-  <!-- end modal -->
+      <!-- end modal -->
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="addNewModal" role="dialog">
-    <div class="modal-dialog">
+      <!-- Modal -->
+      <div class="modal fade" id="addNewModal" role="dialog">
+        <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add new Vehicle</h4>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="col-md-1"></div>
-              <div class="input-group col-md-8">
-                <span class="input-group-addon"> First Block &nbsp;&nbsp;&nbsp;&nbsp;   </span>
-                <input class="form-control" type="text" v-model="inputFirst" placeholder="Input first block" maxlength="3">
-              </div>
-              <br>
-              <div class="col-md-1"></div>
-              <div class="input-group col-md-8">
-                <span class="input-group-addon"> Second Block </span>
-                <input class="form-control" type="text" v-model="inputSecond" placeholder="Input second block" maxlength="4">
-              </div>
-              <br>
-              <div class="col-md-1"></div>
-              <div class = "input-group  col-md-8">
-                <span class="input-group-addon "> Province&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-                <!-- <input type = "text" class = "form-control"> -->
-                <div class = "input-group-btn">
-
-                  <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
-                  data-toggle = "dropdown">
-                  {{province_text}}
-                  <span class = "caret"></span>
-                </button>
-
-                <ul class = "dropdown-menu pull-right scrollable-menu">
-                  <li class="pointer" v-for = "item in provinces"><a  @click = "clickGetLocation(provinces[$index].name)" >{{item.name}}</a></li>
-                </ul>
-              </div><!-- /btn-group -->
-
-            </div><!-- /input-group -->
-
-            <br>
-            <div class="col-md-1"></div>
-            <div class="input-group col-md-8">
-              <span class="input-group-addon"> Color &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-              <input class="form-control" type="text" v-model="inputColor" placeholder="Input color">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Add new Vehicle</h4>
             </div>
-            <br>
-            <div class="col-md-1"></div>
-            <div class="input-group col-md-8">
-              <span class="input-group-addon"> Image URL &nbsp;&nbsp;&nbsp; </span>
-              <input class="form-control" type="text" v-model="inputImageURL" placeholder="Input color">
-            </div>
-
-            <br>
-
-            <div class="row">
-              <div class="col-md-12">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-1"></div>
+                  <div class="input-group col-md-8">
+                    <span class="input-group-addon"> First Block &nbsp;&nbsp;&nbsp;&nbsp;   </span>
+                    <input class="form-control" type="text" v-model="inputFirst" placeholder="Input first block" maxlength="3">
+                  </div>
+                <br>
                 <div class="col-md-1"></div>
-                <div class="col-md-6"></div>
-                <button class="btn btn-default col-md-2" @click="method()" v-link = "'/addVehicle'" >upload</button>
-                <div class="col-md-4"></div>
-              </div>
-            </div>
-            <br>
+                  <div class="input-group col-md-8">
+                    <span class="input-group-addon"> Second Block </span>
+                    <input class="form-control" type="text" v-model="inputSecond" placeholder="Input second block" maxlength="4">
+                  </div>
+                  <br>
+  <div class="col-md-1"></div>
+                  <div class = "input-group  col-md-8">
+                    <span class="input-group-addon "> Province&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                    <!-- <input type = "text" class = "form-control"> -->
+                    <div class = "input-group-btn">
 
-            <!-- model-select -->
-            <div class="col-md-1"></div>
-            <div class = "input-group  col-md-8">
-              <span class="input-group-addon "> Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-              <div class = "input-group-btn">
-                <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
-                data-toggle = "dropdown">
-                {{model_text}}
-                <span class = "caret"></span>
+                      <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
+                      data-toggle = "dropdown">
+                      {{province_text}}
+                      <span class = "caret"></span>
+                    </button>
+
+                    <ul class = "dropdown-menu pull-right scrollable-menu">
+                      <li class="pointer" v-for = "item in provinces"><a  @click = "clickGetLocation(provinces[$index].name)" >{{item.name}}</a></li>
+                    </ul>
+                  </div><!-- /btn-group -->
+
+                </div><!-- /input-group -->
+
+                <br>
+                <div class="col-md-1"></div>
+                <div class="input-group col-md-8">
+                  <span class="input-group-addon"> Color &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                  <input class="form-control" type="text" v-model="inputColor" placeholder="Input color">
+                </div>
+                <br>
+<div class="col-md-1"></div>
+                <div class="input-group col-md-8">
+                  <span class="input-group-addon"> Image URL &nbsp;&nbsp;&nbsp; </span>
+                  <input class="form-control" type="text" v-model="inputImageURL" placeholder="Input color">
+                </div>
+
+                <br>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-6"></div>
+                    <button class="btn btn-default col-md-2" @click="method()" v-link = "'/addVehicle'" >upload</button>
+                    <div class="col-md-4"></div>
+                  </div>
+                </div>
+                <br>
+
+                <!-- model-select -->
+                <div class="col-md-1"></div>
+                <div class = "input-group  col-md-8">
+                  <span class="input-group-addon "> Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                  <div class = "input-group-btn">
+                    <button type = "button" class = "btn btn-default btn-block dropdown-toggle"
+                    data-toggle = "dropdown">
+                    {{model_text}}
+                    <span class = "caret"></span>
+                  </button>
+
+                  <ul class = "dropdown-menu pull-right scrollable-menu">
+                    <li class ="pointer" v-for = "item in models"><a  @click = "clickGetModel([$index])" >Brand : {{item.brand}} Make : {{item.make}}</a></li>
+                  </ul>
+                </div><!-- /btn-group -->
+
+              </div><!-- /input-group -->
+              <!-- end model-select -->
+              <br>
+              <div class="col-md-1"></div>
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                add new model
               </button>
+              <div class="collapse" id="collapseExample">
+                <br>
+                <!-- add new model -->
+                <div class="well my-well">
 
-              <ul class = "dropdown-menu pull-right scrollable-menu">
-                <li class ="pointer" v-for = "item in models"><a  @click = "clickGetModel([$index])" >Brand : {{item.brand}} Make : {{item.make}}</a></li>
-              </ul>
-            </div><!-- /btn-group -->
+                  <div class="input-group col-md-8">
+                    <span class="input-group-addon"> Brand &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                    <input class="form-control" type="text" v-model="inputBrand" placeholder="Input color">
+                  </div>
+                  <br>
+                  <div class="input-group col-md-8">
+                    <span class="input-group-addon"> Make &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                    <input class="form-control" type="text" v-model="inputMake" placeholder="Input color">
+                  </div>
 
-          </div><!-- /input-group -->
-          <!-- end model-select -->
-          <br>
-          <div class="col-md-1"></div>
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            add new model
-          </button>
-          <div class="collapse" id="collapseExample">
-            <br>
-            <!-- add new model -->
-            <div class="well my-well">
-
-              <div class="input-group col-md-8">
-                <span class="input-group-addon"> Brand &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-                <input class="form-control" type="text" v-model="inputBrand" placeholder="Input color">
+                  <br>
+                  <div class="input-group col-md-8">
+                    <button type="button" class="btn btn-success col-md-4" data-toggle="collapse"  data-target="#collapseExample" @click="clickAddModel(inputBrand,inputMake)" >Add model</button>
+                  </div>
+                  <br>
+                </div>
               </div>
-              <br>
-              <div class="input-group col-md-8">
-                <span class="input-group-addon"> Make &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-                <input class="form-control" type="text" v-model="inputMake" placeholder="Input color">
-              </div>
-
-              <br>
-              <div class="input-group col-md-8">
-                <button type="button" class="btn btn-success col-md-4" data-toggle="collapse"  data-target="#collapseExample" @click="clickAddModel(inputBrand,inputMake)" >Add model</button>
-              </div>
-              <br>
             </div>
           </div>
+
+        </div><!-- end body -->
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" @click="clickAddVehicle(inputFirst,inputSecond,inputColor)" >Confirm</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
       </div>
 
-    </div><!-- end body -->
+      <!-- end modal -->
 
-    <div class="modal-footer">
-      <button type="button" class="btn btn-success" data-dismiss="modal" @click="clickAddVehicle(inputFirst,inputSecond,inputColor)" >Confirm</button>
-      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+
+
+
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="lead">Profile . . .</p>
+      <div>
 
-  <!-- end modal -->
-
-
-
-
-</div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <p class="lead">Profile . . .</p>
-    <div>
-
-      <div class="well well_white">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-12"> Firstname: {{firstname}}</div>
-            <div class="col-md-12"> Lastname: {{lastname}}</div>
-            <div class="col-md-12"> Location: {{location}}</div>
-            <div class="col-md-12"> e-mail : {{email}}</div>
-            <div class="col-md-12"> Number of cars : {{count}} cars</div>
-            <div class="col-md-12"></div>
-            <div class="col-md-12"></div>
-            <div class="col-md-12"></div>
-            <div class = "col-md-10"></div>
-            <div class = "col-md-2"><button class="btn btn-default  btn-create" v-link="'/accountsetting'">Edit accout</button></div>
-          </div>
-        </div>
-      </div>
-      <p class="lead">My Vehicle</p>
-
-      <div v-for="item in vehicles">
         <div class="well well_white">
           <div class="row">
             <div class="col-md-12">
-              <p class="lead">Vehicle</p>
-              <hr>
-              <div class="col-md-12">License plate: {{item.first_block}} - {{item.second_block}}</div>
-              <div class="col-md-12">province     : {{item.province}}</div>
-              <div class="col-md-12"> color     : {{item.color}}</div>
-              <div class="col-md-12"> Model : </div>
-              <div class="col-md-12"> Brand     : {{item.brand}}  Make : {{item.make}}  </div>
+              <div class="col-md-12"> Firstname: {{firstname}}</div>
+              <div class="col-md-12"> Lastname: {{lastname}}</div>
+              <div class="col-md-12"> Location: {{location}}</div>
+              <div class="col-md-12"> e-mail : {{email}}</div>
+              <div class="col-md-12"> Number of cars : {{count}} cars</div>
+              <div class="col-md-12"></div>
+              <div class="col-md-12"></div>
+              <div class="col-md-12"></div>
+              <div class = "col-md-10"></div>
+              <div class = "col-md-2"><button class="btn btn-default  btn-create" v-link="'/accountsetting'">Edit accout</button></div>
+            </div>
+          </div>
+        </div>
+        <p class="lead">My Vehicle</p>
+
+        <div v-for="item in vehicles">
+          <div class="well well_white">
+            <div class="row">
               <div class="col-md-12">
-                <div class = "col-md-8"></div>
-                <div class="col-md-2">
-                  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editModal">Edit Vehicle</button>
-                </div>
-                <div class="col-md-2">
-                  <button type="button" class="btn btn-default" @click = "deleteVehicle"> Delete </button>
                 <p class="lead">Vehicle</p>
                 <hr>
                 <div class="col-md-12">License plate: {{item.first_block}} - {{item.second_block}}</div>
@@ -315,29 +301,30 @@
                 <div class="col-md-12"> color     : {{item.color}}</div>
                 <div class="col-md-12"> Model : </div>
                 <div class="col-md-12"> Brand     : {{item.brand}}  Make : {{item.make}}  </div>
-                <div class = "col-md-10"></div>
-                <div class="input-group col-md-2">
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editModal" @click = "setEditIndex($index)">Edit Vehicle</button>
+                <div class = "col-md-8"></div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editModal">Edit Vehicle</button>
+                    </div>
+                  <div class="col-md-2">
+                  <button type="button" class="btn btn-default" @click = "deleteVehicle">Delete</button>
                   </div>
-                </div>
+
               </div>
-            </div>
+              </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
-</div>
 
-</div>
-
-<div class="col-md-3"></div>
-<div class="input-group col-md-6">
-  <!-- <button class="btn btn-default btn-block" @click="clickAddModel(inputFirst,inputSecond,inputColor)">add vehicle</button> -->
-  <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#addNewModal">Add Vehicle</button>
-</div>
-<div class="col-md-3"></div>
-<!-- end new-version -->
+  <div class="col-md-3"></div>
+  <div class="input-group col-md-6">
+    <!-- <button class="btn btn-default btn-block" @click="clickAddModel(inputFirst,inputSecond,inputColor)">add vehicle</button> -->
+    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#addNewModal">Add Vehicle</button>
+  </div>
+  <div class="col-md-3"></div>
+  <!-- end new-version -->
 
 </div>
 </div>
@@ -347,7 +334,6 @@
 export default {
   data() {
     return {
-      editIndex:0,
       userId: 81,
       firstname:"no connection",
       lastname:"no connection",
@@ -370,18 +356,17 @@ export default {
       models: null,
       vehicles:[
         {
-          // id: "",
-          // first_block:"-",
-          // second_block:"",
-          // color:"-",
-          // province:"-",
-          // brand:"-",
-          // make:"-",
+          first_block:"-",
+          second_block:"",
+          color:"-",
+          province:"-",
+          brand:"-",
+          make:"-",
         }]
       }
     },
     created () {
-      console.log("Dash created123");
+      console.log("Dash created");
       this.refresh();
       this.firstname = 0;
     },
@@ -426,39 +411,6 @@ export default {
       this.province_text = "Province";
       this.model_text = "Model";
       this.count = this.vehicles.length;
-    },
-    clickEditVehicle(index,first,second,color){
-      console.log('confirm2'+index);
-      var vehicle = {
-        id: this.editIndex,
-        vehiclemodel_id: this.vehiclemodel_id,
-        user_id: this.userId,
-        location: this.location,
-        first_block: first,
-        second_block: second,
-        color: color,
-        province: this.province_text,
-      };
-      this.$http.post("http://localhost:7777/updatevehicle", vehicle, (data) => {
-        console.log('success')
-      }
-      ).error((err) => {
-        console.log('error วะ ต่อ'+err);
-      });
-    },
-    deleteVehicle(){
-
-    },
-    setEditIndex(index){
-      this.editIndex = this.vehicles[index].id;
-      console.log(this.editIndex);
-      this.inputFirst = this.vehicles[index].first_block;
-      this.inputSecond = this.vehicles[index].second_block;
-      this.inputColor = this.vehicles[index].color;
-      this.province_text = this.vehicles[index].province;
-      var b = this.vehicles[index].brand;
-      var m = this.vehicles[index].make;
-      this.model_text = "Brand: "+b+"Make: "+m;
     },
     clickAddModel(b,m){
       var model = {
@@ -525,13 +477,15 @@ export default {
       // this.provinces = data;
     });
   },
+  deleteVehicle(){
+
+  },
   initVehicle(id){
     console.log('in id = '+id);
     this.$http
     .get('http://localhost:7777/vehicle/'+id, (data) => {
       console.log(data);
-      console.log("vehiclelkjkljkl"+data[0].id);
-      console.log("vehiclelkjkljkl"+data[1].id);
+      console.log("vehicle"+data[0].id);
       this.vehicles = data;
     });
   },
