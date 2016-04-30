@@ -39,7 +39,7 @@
               <div class="row">
 
                 <div class = "col-md-6">
-                  <button class="btn btn-primary btn-block" @click="method()">Save changes</button>
+                  <button class="btn btn-primary btn-block" @click="method()" v-link = "'/addVehicle'" >Save changes</button>
                 </div>
                 <div class="col-md-6">
                   <button class="btn btn-default btn-block" @click="method()" v-link = "'/addVehicle'">Cancel</button>
