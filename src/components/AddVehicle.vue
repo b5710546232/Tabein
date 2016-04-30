@@ -165,10 +165,6 @@
                 <div class="col-md-12"> color     : {{item.color}}</div>
                 <div class="col-md-12"> Model : </div>
                 <div class="col-md-12"> Brand     : {{item.brand}}  Make : {{item.make}}  </div>
-                <div class = "col-md-10"></div>
-                <div class="input-group col-md-2">
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editModal">Edit Vehicle</button>
-                  </div>
                 </div>
               </div>
               </div>

@@ -378,7 +378,7 @@ export default {
       .get('http://localhost:7777/initRate/'+vid, (data) => {
         for(var i=0 ; i<data.length ; i++){
           // console.log("RATE"+data[i].message);
-          this.comments.unshift({text:data[i].message, rattings:data[i].rate});
+          this.comments.unshift({text:data[i].message, rattings:data[i].rate });
         }
       });
       // this.$http.get('http://localhost:7777/initRate/'+vid, data).then(function(res){

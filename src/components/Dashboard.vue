@@ -157,11 +157,24 @@
           <div class="well well_white">
             <p class="lead">Vehicle</p>
             <hr>
-            <div class="">License plate: {{item.first_block}}{{item.second_block}}</div>
-            <div class=""> province     : {{item.province}}</div>
-            <div class=""> color     : {{item.color}}</div>
-            <div class=""> Brand     : {{item.brand}}</div>
-            <div class=""> model : {{item.make}}</div>
+          <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">License plate: {{item.first_block}}{{item.second_block}}</div>
+                <div class="col-md-12">&nbsp;</div>
+                          <div class="col-md-12"> province     : {{item.province}}</div>
+                          <div class="col-md-12">&nbsp;</div>
+                          <div class="col-md-12"> color     : {{item.color}}</div>
+                          <div class="col-md-12">&nbsp;</div>
+                          <div class="col-md-12"> Brand     : {{item.brand}}</div>
+                          <div class="col-md-12">&nbsp;</div>
+                          <div class="col-md-12"> model : {{item.make}}</div>
+                          <div class="col-md-12">&nbsp;</div>
+                          <div class="col-md-10"></div>
+                          <div class="input-group col-md-2">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editModal">Edit Vehicle</button>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
 
@@ -286,5 +299,15 @@ export default {
 }
 .pointer{
   cursor: pointer;
+}
+.caret {
+  position: absolute;
+  left: 90%;
+  top: 45%;
+}
+.scrollable-menu{
+  height:auto;
+  max-height:200px;
+  overflow-x: hidden;
 }
 </style>
