@@ -123,7 +123,7 @@
 export default {
   data() {
     return {
-      avg_ratting:3.6,
+      avg_ratting:0,
       total_ratting: "no connection",
       vehicle_id: 71,
       reviewer_id: 211,
@@ -191,9 +191,10 @@ export default {
       });
       this.comments.unshift({text:this.comment_text , rattings:this.value});
       this.comment_text='';
-      this.value = 1;
-      this.avg_ratting = (this.avg_ratting+this.rate)/2;
+      var temp = (parseInt(this.avg_ratting)+parseInt(this.rate))/2;
+      this.avg_ratting = temp;
       this.total_ratting = this.comments.length;
+      this.value = 1;
     },
     initVehicle(id){
       console.log("vehicle"+id);
@@ -278,7 +279,8 @@ export default {
     avgRate(vid){
       this.$http
       .get('http://localhost:7777/avgRate/'+vid, (data) => {
-          this.avg_ratting = data[0].avgRate;
+          var x = data[0].avgRate;
+          this.avg_ratting = x.toFixed(1);
       });
     }
   }
