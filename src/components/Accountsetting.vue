@@ -42,7 +42,7 @@
                   <button class="btn btn-primary btn-block" @click="method()" v-link = "'/dashboard'" >Save changes</button>
                 </div>
                 <div class="col-md-6">
-                  <button class="btn btn-default btn-block" @click="method()" v-link = "'/dashboard'">Cancel</button>
+                  <button class="btn btn-default btn-block" @click="methodX()">Cancel</button>
                 </div>
 
               </div>
@@ -62,10 +62,17 @@ export default {
       msg:""
     }
   },
+  ready(){
+    console.log('set c');
+  },
   methods: {
     someMethod(){
 
     },
+    methodX(){
+      this.$router.go('/accountsetting')
+      location.reload();
+    }
   }
 }
 </script>
