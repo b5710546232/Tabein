@@ -9,7 +9,7 @@ import Register from './components/Register.vue'
 import DashBoard from './components/Dashboard.vue'
 import Accountsetting from './components/Accountsetting.vue'
 import AddModel from './components/AddModel.vue'
-import AddVehicle from './components/AddVehicle.vue'
+// import AddVehicle from './components/AddVehicle.vue'
 import Test from './components/Test.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
@@ -52,9 +52,9 @@ router.map({
   '/addModel':{
     component:AddModel
   },
-  '/addVehicle':{
-    component:AddVehicle
-  },
+  // '/addVehicle':{
+  //   component:AddVehicle
+  // },
   '/temp':{
     component:Temp
   },
