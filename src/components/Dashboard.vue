@@ -331,10 +331,11 @@
 export default {
   data() {
     return {
-      userId: 41,
+      userId: 81,
       firstname:"no connection",
       lastname:"no connection",
       location:"no connection",
+      email: "no connection",
       text1:"",
       text2:"",
       msg:"",
@@ -362,9 +363,9 @@ export default {
       }
     },
     created () {
+      console.log("Dash created");
       this.refresh();
       this.firstname = 0;
-
     },
     methods: {
       clickAddVehicle(first,second,color){
@@ -452,6 +453,7 @@ export default {
       this.firstname = data[0].firstname;
       this.lastname = data[0].lastname;
       this.location = data[0].location;
+      this.email = data[0].email;
     });
   },
   initProvince(){
