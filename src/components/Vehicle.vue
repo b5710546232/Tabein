@@ -12,7 +12,7 @@
               <div class="col-md-4">
               </div>
               <div class="col-md-4">
-                <img class="img-responsive" src={{imageURL}} alt="">
+                <img class="img-responsive"  src="{{imageURL}}" alt="">
               </div>
 
               <div class="mytext col-md-5">
@@ -47,10 +47,7 @@
             </div>
             <div class="col-md-7">
               <div class="row">
-
                 <div class="col-md-12">
-
-
                   <div class="row">
                     <div class="col-md-2">
                       5  <span class="glyphicon glyphicon-star"></span>
@@ -140,7 +137,7 @@
           <div class="row review-row">
             <div class="col-md-12">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Write a review ..." v-model="comment_text"  @keyup.enter = "addRate" autofocus>
+                <input type="text" class="form-control" placeholder="Write a review ..." v-model="review_text"  @keyup.enter = "addRate" autofocus>
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button" @click = "addRate()">submit</button>
                 </span>
@@ -163,30 +160,68 @@
           </div>
         </div><!-- well -->
 
-        <!-- comments -->
-        <div v-for="comment of comments">
+        <!-- reviews -->
+        <div v-for="item of reviews">
           <div class="well well_white">
             <div class="row">
               <div class="col-md-12">
-                <label class="star-rating__star" v-for="rating in ratings"
-                :class="{'is-selected': ((comment.rattings >= rating) && value != null), 'is-disabled': disabled}">★</label>
-                <br>
-                {{username}}
-                <br>
-                <span class="pull-right">{{time_since_post}}</span>
-                {{ comment.text }}
+                <label class="star-rating__star" v-for="rating in ratings":class="{'is-selected': ((item.rattings >= rating) && value != null), 'is-disabled': disabled}">★</label>
+                <div class="col-md-12">&nbsp;</div>
+                <div class="col-md-12">{{username}}</div>
+                <div class="col-md-12">&nbsp;</div>
+                <div class="col-md-12">{{ item.text }}</div>
+                <div class="col-md-11"></div>
+                <div class="col-md-1">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{collapseReply($index)}}" aria-expanded="" aria-controls="#collapseReply" @click="setReplyId($index)">reply</button>
+                </div>
+                <!-- comment collapse -->
+                <div class="col-md-12 collapse" id="{{collapseReply($index)}}" >
+                  <div class="well my-well">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="col-md-12">
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Write a comment ..." v-model="reply_text[$index]"  autofocus>
+                            <span class="input-group-btn">
+                              <button class="btn btn-default" type="button" @click = "addReply($index)" >submit</button>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- reply -->
+                  <div v-for = "reply in replys[$index]" >
+                    <div class="col-md-12">
+                      <div class="well well_white">
+                        <div class="row">
+                          <div class="col-md-12">
+                            {{$index}}
+                            <p>{{reply.text}}</p>
+                          </div>
+                          <div class="col-md-12">&nbsp;</div>
+                          <div class="col-md-10">{{reply.name}}</div>
+                          <div class="col-md-2">{{reply.date}}</div>
+                          <div class="col-md-12">&nbsp;</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">&nbsp;</div>
+                  <!-- reply -->
 
+                  <!-- comment collapse -->
+                  <span class="pull-right">{{time_since_post}}</span>
+                  <div class="col-md-12">&nbsp;</div>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
-
       </div>
-
-
     </div>
   </div>
-</div>
 </template>
 
 
@@ -218,11 +253,18 @@ export default {
       value:1,
       ratings: [1, 2, 3, 4, 5],
       emptystars:[1],
-      comment_text:"",
+      review_text:"",
       imgURL:"http://placehold.it/150x150",
       msg:"",
       time_since_post:"x day ago",
-      comments:[],
+      reviews:[],
+      replys:[[]],
+      // replys:[
+      //   [{name:"safe",text:"Test1",date:"5 day ago"},{name:"safe",text:"Test1",date:"5 day ago"}],
+      //   [{name:"tem",text:"Test2",date:"1 day ago"},{name:"tem",text:"Test2",date:"2 day ago"},{name:"tem",text:"Test2",date:"3 day ago"}],
+      // ],
+      reply_text:[],
+      replyID:0
     }
   },
   props: {
@@ -250,7 +292,7 @@ export default {
     this.imgURL = "http://carsport.online/wp-content/uploads/2016/03/dodge-sports-car-names-FotosdeCarrosDeportivos-150x150.jpg"
   },
   watch:{
-    // 'comments': function (val, oldVal) {
+    // 'reviews': function (val, oldVal) {
     //    console.log('new: %s, old: %s', val, oldVal)
     //    this.initRate(this.vehicle_id);
     //  },
@@ -277,12 +319,25 @@ export default {
     },
     progressWidth_1(){
       return "width:" + (this.progress_1/this.total_ratting)*100 + "%";
-
-    }
+    },
   },
   methods: {
+    addReply(index){
+      console.log("index  = "+index);
+      console.log("reply"+this.reply_text[index]);
+      var reply = {name:"commentname", text:this.reply_text[index]+"",date:Date.now()}
+      this.replys[index].unshift(reply);
+      this.reply_text[index] = "";
+      // this.replys[index].unshift(reply_text[index]);
+    },
+    collapseReply(index){
+      return "collapseReply"+index;
+    },
+    getX(){
+      return "XXXXXXX";
+    },
     addRate(){
-      console.log("text"+this.comment_text);
+      console.log("text"+this.review_text);
       // console.log("date"+Date.now());
       this.rate = this.value;
       var rate = {
@@ -290,16 +345,16 @@ export default {
         vehicle_id: this.vehicle_id,
         rate: this.rate,
         timestamp: Date.now(),
-        message: this.comment_text
+        message: this.review_text
       };
       this.$http
       .post('http://localhost:7777/newrating', rate, (data) => {
       });
-      this.comments.unshift({text:this.comment_text , rattings:this.value});
-      this.comment_text='';
+      this.reviews.unshift({text:this.review_text , rattings:this.value});
+      this.review_text='';
       var temp = (parseInt(this.avg_ratting)+parseInt(this.rate))/2;
       this.avg_ratting = temp;
-      this.total_ratting = this.comments.length;
+      this.total_ratting = this.reviews.length;
       switch (this.value) {
         case 5:
         this.progress_5 ++;
@@ -370,12 +425,12 @@ export default {
       });
     },
     initRate(vid){
-      // this.comments = [];
+      // this.reviews = [];
       this.$http
       .get('http://localhost:7777/initRate/'+vid, (data) => {
         for(var i=0 ; i<data.length ; i++){
           // console.log("RATE"+data[i].message);
-          this.comments.unshift({text:data[i].message, rattings:data[i].rate });
+          this.reviews.unshift({text:data[i].message, rattings:data[i].rate });
         }
       });
       // this.$http.get('http://localhost:7777/initRate/'+vid, data).then(function(res){
@@ -409,8 +464,8 @@ export default {
       // console.log(value+" ratings");
     },
     addComment(){
-      this.comments.unshift({text:this.comment_text , rattings:this.value});
-      this.comment_text='';
+      this.reviews.unshift({text:this.review_text , rattings:this.value});
+      this.review_text='';
       this.value = 1;
     },
     numRate(vid){
