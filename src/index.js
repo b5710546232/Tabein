@@ -18,6 +18,7 @@ import VueResource from 'vue-resource'
 import EditVehicle from './components/EditVehicle.vue'
 import Temp from './components/temp.vue'
 
+
 Vue.use(VueRouter);
 Vue.use(VueResource);
 export const router = new VueRouter();

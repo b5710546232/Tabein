@@ -61,9 +61,8 @@
                   <span class="input-group-addon"> Image URL &nbsp;&nbsp;&nbsp; </span>
                   <input class="form-control" type="text" v-model="inputImageURL" placeholder="Input color">
                 </div>
-
-                <br>
-
+<!-- upload -->
+                <!-- <br>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="col-md-1"></div>
@@ -71,9 +70,9 @@
                     <button class="btn btn-default col-md-2" @click="method()" v-link = "'/addVehicle'" >upload</button>
                     <div class="col-md-4"></div>
                   </div>
-                </div>
+                </div> -->
+                <!-- upload -->
                 <br>
-
                 <!-- model-select -->
                 <div class="col-md-1"></div>
                 <div class = "input-group  col-md-8">
@@ -125,7 +124,7 @@
         </div><!-- end body -->
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" @click="clickAddVehicle(inputFirst,inputSecond,inputColor)" >Confirm</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal"  @click="clickAddVehicle(inputFirst,inputSecond,inputColor)" >Confirm</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
       </div>
@@ -193,8 +192,8 @@
                 </div>
 
                 <br>
-
-                <div class="row">
+<!-- upload -->
+                <!-- <div class="row">
                   <div class="col-md-12">
                     <div class="col-md-1"></div>
                     <div class="col-md-6"></div>
@@ -202,7 +201,8 @@
                     <div class="col-md-4"></div>
                   </div>
                 </div>
-                <br>
+                <br> -->
+                <!-- upload -->
 
                 <!-- model-select -->
                 <div class="col-md-1"></div>
@@ -271,8 +271,9 @@
     <div class="col-md-12">
       <p class="lead">Profile . . .</p>
       <div>
+        <div class="login-panel panel panel-default"></div>
 
-        <div class="well well_white">
+        <div class="well well_white shadow-well">
           <div class="row">
             <div class="col-md-12">
               <div class="col-md-12"> Firstname: {{firstname}}</div>
@@ -290,8 +291,8 @@
         </div>
         <p class="lead">My Vehicle</p>
 
-        <div v-for="item in vehicles">
-          <div class="well well_white">
+        <div v-for="item in vehicles"   transition="staggered"stagger="100" >
+          <div class="well well_white shadow-well">
             <div class="row">
               <div class="col-md-12">
                 <p class="lead">Vehicle</p>
@@ -321,7 +322,7 @@
   <div class="col-md-3"></div>
   <div class="input-group col-md-6">
     <!-- <button class="btn btn-default btn-block" @click="clickAddModel(inputFirst,inputSecond,inputColor)">add vehicle</button> -->
-    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#addNewModal">Add Vehicle</button>
+    <button type="button" class="shadow-btn btn btn-default btn-block" data-toggle="modal" data-target="#addNewModal">Add Vehicle</button>
   </div>
   <div class="col-md-3"></div>
   <!-- end new-version -->
@@ -367,8 +368,12 @@ export default {
     },
     created () {
       console.log("Dash created");
-      this.refresh();
+      // this.refresh();
       this.firstname = 0;
+    },
+    ready(){
+      console.log('call ready');
+      this.refresh();
     },
     methods: {
       clickAddVehicle(first,second,color){
@@ -397,9 +402,9 @@ export default {
             color: color,
             province: this.province_text,
           };
-          this.vehicles.push(newModel);
+          // this.vehicles.push(newModel);
           this.$http.post("http://localhost:7777/newvehicle", newModel, (data) => {
-            console.log('success')
+            console.log('success');
           }
         ).error((err) => {
           console.log('error วะ ต่อ'+err);
@@ -486,7 +491,8 @@ export default {
     .get('http://localhost:7777/vehicle/'+id, (data) => {
       console.log(data);
       console.log("vehicle"+data[0].id);
-      this.vehicles = data;
+      // this.vehicles = data;
+      this.$set('vehicles',data);
     });
   },
   numVehicle(id){
@@ -509,12 +515,29 @@ export default {
 .pointer{
   cursor: pointer;
 }
+.staggered-transition {
+    transition: all .5s ease;
+    /*overflow: hidden;*/
+    /*padding-bottom: 50%;*/
+    /*margin: 0;*/
+    /*height: 20px;*/
+}
+.staggered-enter, .staggered-leave {
+    opacity: 0;
+    height: 0;
+}
 .caret {
   position: absolute;
   left: 90%;
   top: 45%;
 }
 .my-well {
-  background-color: #f7f7f7
+  background-color: #f7f7f7;
+}
+.shadow-well{
+  box-shadow:0px 0.25px 5px 0.01px #a7a3a3;
+}
+.shadow-btn{
+  box-shadow:0px 0.25px 1px 0.01px #a7a3a3;
 }
 </style>

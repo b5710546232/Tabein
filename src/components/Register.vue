@@ -57,4 +57,7 @@
 .text-input{
   padding-bottom: 2%;
 }
+.panel{
+  box-shadow:0px 5px 5px 0.01px #a7a3a3;
+}
 </style>

@@ -3,7 +3,7 @@
     <nav class="navbar navbar-default navbar-fixed-top" id="topbar" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Tabein</a>
+          <a class="navbar-brand" v-link = "'/dashboard'">Tabein</a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>

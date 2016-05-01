@@ -40,4 +40,7 @@ export default {
 .btn-default{
   background: #f1f1f1;
 }
+.login-panel{
+  box-shadow:0px 5px 5px 0.01px #a7a3a3;
+}
 </style>
