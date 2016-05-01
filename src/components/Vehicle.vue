@@ -12,7 +12,7 @@
               <div class="col-md-4">
               </div>
               <div class="col-md-4">
-                <img class="img-responsive"  src="{{imageURL}}" alt="">
+                <img class="img-responsive"  v-bind:src="imageURL" alt="">
               </div>
 
               <div class="mytext col-md-5">
@@ -132,7 +132,7 @@
           </div>
         </div>
 
-        <div class="well">
+        <div class="well" v-if = "user.authenticated">
           <div class="row review-row"><div class="col-md-12">Review by {{firstname}} {{lastname}} ({{username}})</div></div>
           <div class="row review-row">
             <div class="col-md-12">
@@ -172,7 +172,7 @@
                 <div class="col-md-12">{{ item.text }}</div>
                 <div class="col-md-11"></div>
                 <div class="col-md-1">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{collapseReply($index)}}" aria-expanded="" aria-controls="#collapseReply" @click="setReplyId($index)">reply</button>
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{collapseReply($index)}}" aria-expanded="" aria-controls="#collapseReply">reply</button>
                 </div>
                 <!-- comment collapse -->
                 <div class="col-md-12 collapse" id="{{collapseReply($index)}}" >
@@ -181,7 +181,7 @@
                       <div class="col-md-12">
                         <div class="col-md-12">
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Write a comment ..." v-model="reply_text[$index]"  autofocus>
+                            <input type="text" class="form-control" placeholder="Write a comment ..." v-model="reply_text" @keyup.enter= "addReply($index)" autofocus>
                             <span class="input-group-btn">
                               <button class="btn btn-default" type="button" @click = "addReply($index)" >submit</button>
                             </span>
@@ -226,9 +226,11 @@
 
 
 <script>
+import auth from '../auth'
 export default {
   data() {
     return {
+      user: auth.user,
       avg_ratting:0,
       total_ratting: "no connection",
       vehicle_id: 71,
@@ -258,12 +260,12 @@ export default {
       msg:"",
       time_since_post:"x day ago",
       reviews:[],
-      replys:[[]],
+      replys:[],
       // replys:[
       //   [{name:"safe",text:"Test1",date:"5 day ago"},{name:"safe",text:"Test1",date:"5 day ago"}],
       //   [{name:"tem",text:"Test2",date:"1 day ago"},{name:"tem",text:"Test2",date:"2 day ago"},{name:"tem",text:"Test2",date:"3 day ago"}],
       // ],
-      reply_text:[],
+      reply_text:"",
       replyID:0
     }
   },
@@ -276,6 +278,10 @@ export default {
   },
   created(){
     console.log("Start vehicle.vue");
+  },
+  ready(){
+    console.log(this.$route.params.id+ "  route name");
+    console.log(this.$route);
     this.initVehicle(this.vehicle_id);
     this.initOwner(this.vehicle_id);
     this.initVehicleModel(this.vehicle_id);
@@ -324,10 +330,14 @@ export default {
   methods: {
     addReply(index){
       console.log("index  = "+index);
-      console.log("reply"+this.reply_text[index]);
-      var reply = {name:"commentname", text:this.reply_text[index]+"",date:Date.now()}
+      console.log("reply"+this.reply_text);
+      var reply = {name:"commentname", text:this.reply_text+"",date:Date.now()};
+      this.reply_text = "";
+      console.log(this.replys);
+      console.log(reply);
+      console.log(index);
       this.replys[index].unshift(reply);
-      this.reply_text[index] = "";
+      // this.reply_text[index] = "";
       // this.replys[index].unshift(reply_text[index]);
     },
     collapseReply(index){
@@ -340,6 +350,7 @@ export default {
       console.log("text"+this.review_text);
       // console.log("date"+Date.now());
       this.rate = this.value;
+      this.replys.unshift([]);
       var rate = {
         user_id: this.reviewer_id,
         vehicle_id: this.vehicle_id,

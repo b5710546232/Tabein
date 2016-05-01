@@ -13,7 +13,7 @@ import AddModel from './components/AddModel.vue'
 import Test from './components/Test.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
-
+import Success from './components/Success.vue'
 
 import EditVehicle from './components/EditVehicle.vue'
 import Temp from './components/temp.vue'
@@ -38,7 +38,8 @@ router.map({
   '/register':{
     component:Register
   },
-  '/vehicle':{
+  '/vehicle/:id':{
+    name:"vehicle",
     component:Vehicle
   },
   '/dashboard':{
@@ -61,11 +62,14 @@ router.map({
   },
   '/editVehicle':{
     component:EditVehicle
+  },
+  '/success':{
+    component:Success
   }
 });
 // redirect to home if any routes are unmatched
 router.redirect({
-  '*':'/vehicle'
+  '*':'/success'
   // '*':'/home'
   // '*':'/dashboard'
   // '*': '/addModel'

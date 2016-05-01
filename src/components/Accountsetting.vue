@@ -39,7 +39,7 @@
               <div class="row">
 
                 <div class = "col-md-6">
-                  <button class="btn btn-primary btn-block" @click="updateUser(username,password,firstname,lastname,location,email)" v-link = "'/dashboard'" >Save changes</button>
+                  <button class="btn btn-default btn-block" @click="updateUser(username,password,firstname,lastname,location,email)" v-link = "'/dashboard'" >Save changes</button>
                 </div>
                 <div class="col-md-6">
                   <button class="btn btn-default btn-block" @click="methodX()">Cancel</button>

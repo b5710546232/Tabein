@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-4"></div>
               <div class = "col-md-4">
-            <button class="btn btn-default btn-block btn-create" @click="method()">Create an account</button>
+            <button class="btn btn-default btn-block btn-create" @click="method()" v-link = "'/success'">Create an account</button>
             </div>
             <div class="col-md-4"></div>
           </div>
